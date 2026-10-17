@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AgroVision AI – Grow Smarter. Harvest Better.</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F8FAF7;--card:#fff;--ink:#1F2937;--mut:#566170;--line:#dfe6dd;--mint:#DCFCE7;--em:#16A34A;--btn:#15803d;--acc:#14532D;--sh:0 6px 24px rgba(20,83,45,.09);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a11;--card:#14241a;--ink:#e6efe8;--mut:#9db3a4;--line:#274030;--mint:#1c3a26;--btn:#16a34a;--acc:#86efac;--sh:0 6px 24px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1a11;--card:#14241a;--ink:#e6efe8;--mut:#9db3a4;--line:#274030;--mint:#1c3a26;--btn:#16a34a;--acc:#86efac;--sh:0 6px 24px rgba(0,0,0,.4);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,"Noto Sans Devanagari",system-ui,sans-serif;line-height:1.5}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0 0 .4em;line-height:1.15}p{margin:.3em 0}
+.bt{border:0;background:var(--btn);color:#fff;padding:11px 18px;border-radius:12px;font-weight:800;transition:.2s;display:inline-flex;gap:8px;align-items:center;justify-content:center}
+.bt:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,163,74,.35)}
+.bt.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.bt.sm{padding:6px 12px;font-size:.85em}
+input,select,textarea{background:var(--card);border:2px solid var(--line);border-radius:10px;padding:9px 12px;width:100%}
+label{font-weight:700;font-size:.85em;display:block;margin:8px 0 3px}
+/* landing */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(10,40,22,.72);backdrop-filter:blur(14px);color:#fff;flex-wrap:wrap}
+.nav b{font-size:1.2em;margin-right:auto}.nav a{padding:6px 10px;border-radius:8px;font-weight:600;font-size:.92em}.nav a:hover{background:rgba(255,255,255,.15)}
+.hero{position:relative;overflow:hidden;min-height:92vh;color:#fff;background:linear-gradient(160deg,#052e16,#14532D 55%,#0b3b1f);display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:60px 6vw 120px}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:float 12s ease-in-out infinite}
+.farm{position:absolute;left:0;right:0;bottom:0;height:42%;perspective:500px;overflow:hidden}
+.farm i{position:absolute;inset:0;transform:rotateX(64deg) scale(1.8);transform-origin:50% 100%;background:repeating-linear-gradient(90deg,#14532D 0 22px,#1b7a3d 22px 44px);opacity:.75;animation:rows 6s linear infinite}
+.farm:after{content:"";position:absolute;inset:0;background:linear-gradient(#14532D 0%,transparent 60%)}
+.hero h1 span{background:linear-gradient(90deg,#86efac,#fde047);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.15em;max-width:36em;opacity:.92}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.hero .bt.ghost{color:#fff;border-color:rgba(255,255,255,.6)}
+.prev{position:relative;z-index:2;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(16px);border-radius:24px;padding:20px;transition:transform .15s;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.orbit{position:absolute;inset:-46px;border:1px dashed rgba(255,255,255,.4);border-radius:50%;animation:spin 14s linear infinite;pointer-events:none}
+.orbit span{position:absolute;top:-14px;left:50%;font-size:1.7em}
+.mini{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;margin:12px 0;position:relative;overflow:hidden;border-radius:10px}
+.mini i{aspect-ratio:1;border-radius:3px;animation:pulse 2.4s ease-in-out infinite}
+.scan{position:absolute;left:0;right:0;height:14px;background:linear-gradient(transparent,rgba(255,255,255,.7),transparent);animation:scan 3s linear infinite;pointer-events:none}
+.pm{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid rgba(255,255,255,.2);font-weight:700}
+.tag{display:inline-block;font-size:.72em;font-weight:800;padding:2px 9px;border-radius:99px;background:#fef3c7;color:#78350f}
+.tag.live{background:#bbf7d0;color:#14532D}
+.sec{padding:70px 6vw}.sec h2{font-size:2em;text-align:center}.sec .sub{text-align:center;color:var(--mut);margin-bottom:30px}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.fc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--sh);transition:.25s;position:relative;overflow:hidden;--x:50%;--y:50%}
+.fc:before{content:"";position:absolute;inset:0;background:radial-gradient(220px circle at var(--x) var(--y),rgba(22,163,74,.22),transparent 60%);opacity:0;transition:.3s}
+.fc:hover:before{opacity:1}.fc:hover{transform:translateY(-6px) rotate(-.5deg)}
+.fc .ic{font-size:2.2em}
+.arch{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:stretch}
+.arch div{flex:1 1 150px;max-width:210px;padding:16px;border-radius:16px;color:#14301c;font-weight:700;animation:glow 5s ease-in-out infinite}
+.arch small{display:block;font-weight:400;margin-top:4px}
+.foot{background:#052e16;color:#cfe8d6;padding:40px 6vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.foot b{color:#fff}
+/* app */
+.app{display:flex;min-height:100vh}
+.side{width:236px;background:#0f3d20;color:#e7f5ea;padding:14px 10px;display:flex;flex-direction:column;gap:3px;transition:width .25s;flex:none;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto}
+.side a{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:12px;font-weight:600;white-space:nowrap}
+.side a:hover{background:rgba(255,255,255,.1)}.side a.on{background:#16A34A;color:#fff}
+.side .brand{padding:6px 10px 14px;font-size:1.05em}
+.col .side{width:68px}.col .side em{display:none}
+.main{flex:1;min-width:0}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;display:flex;gap:10px;align-items:center;padding:10px 20px;background:var(--bg);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.top select{width:auto;max-width:200px}
+.page{padding:20px;max-width:1300px;animation:in .35s}
+.g{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--sh);transition:.2s}
+.card:hover{transform:translateY(-2px)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:16px}
+.kpi b{font-size:2em;display:block;color:var(--acc)}.kpi span{color:var(--mut);font-weight:700}
+.wx{display:flex;gap:14px;flex-wrap:wrap;background:linear-gradient(120deg,#14532D,#16A34A);color:#fff;border-radius:18px;padding:16px 20px;margin-bottom:16px;align-items:center}
+.wx div{min-width:90px}.wx b{font-size:1.4em;display:block}
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}
+.steps a{background:var(--mint);color:#14532D;font-weight:800;font-size:.8em;padding:5px 12px;border-radius:99px}
+.steps a:hover{background:var(--em);color:#fff}
+.map{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;position:relative;overflow:hidden;border-radius:12px}
+.cell{aspect-ratio:1;border:2px solid transparent;border-radius:5px;transition:.15s;padding:0}
+.cell:hover{transform:scale(1.18);z-index:2;border-color:#fff}.cell.on{border-color:#111;transform:scale(1.15)}
+.leg{display:flex;gap:10px;flex-wrap:wrap;font-size:.8em;font-weight:700;margin-top:8px}.leg i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:4px}
+.chart svg{width:100%;touch-action:none}.tip{font-size:.8em;font-weight:700;color:var(--mut);min-height:1.4em}
+.xl{display:flex;justify-content:space-between;font-size:.7em;color:var(--mut)}
+.bars{display:flex;gap:6px;align-items:flex-end;height:150px}
+.bcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:.75em;font-weight:800}
+.bcol i{width:100%;border-radius:8px 8px 0 0;min-height:4px;transition:height .6s}.bcol:hover i{filter:brightness(1.15)}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.row>*:first-child{flex:1}
+.pill{padding:2px 10px;border-radius:99px;font-size:.75em;font-weight:800;color:#fff;display:inline-block}
+.tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}.tabs button{border:2px solid var(--line);background:var(--card);padding:8px 16px;border-radius:99px;font-weight:800}.tabs .on{background:var(--btn);color:#fff;border-color:var(--btn)}
+table{width:100%;border-collapse:collapse;font-size:.92em}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}tr.sel{background:var(--mint)}tbody tr{cursor:pointer}
+.sk{height:150px;background:linear-gradient(90deg,var(--line),var(--mint),var(--line));background-size:200% 100%;animation:sh 1.2s infinite}
+.mod{position:fixed;inset:0;background:rgba(0,0,0,.55);display:grid;place-items:center;z-index:50;padding:16px}
+.dlg{background:var(--card);border-radius:20px;padding:22px;max-width:480px;width:100%;max-height:88vh;overflow:auto}
+.chat{height:420px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:6px}
+.msg{max-width:85%;padding:10px 14px;border-radius:16px;white-space:pre-line}
+.msg.u{align-self:flex-end;background:var(--btn);color:#fff}.msg.a{background:var(--mint);color:#14301c}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.chips button{border:2px solid var(--line);background:var(--card);border-radius:99px;padding:6px 14px;font-weight:700}
+.chips button:hover{border-color:var(--em)}
+.stp{display:flex;gap:4px;margin-top:6px}.stp span{flex:1;text-align:center;font-size:.7em;font-weight:800;padding:4px;border-radius:8px;background:var(--line)}.stp .d{background:var(--em);color:#fff}
+.err{background:#fee2e2;color:#7f1d1d;padding:8px 12px;border-radius:10px;margin-top:8px;font-weight:700}
+.okk{background:#dcfce7;color:#14532D;padding:8px 12px;border-radius:10px;margin-top:8px;font-weight:700}
+@keyframes float{50%{transform:translate(30px,-30px)}}@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rows{to{background-position:44px 0}}@keyframes pulse{50%{opacity:.55}}@keyframes scan{from{top:-14px}to{top:100%}}
+@keyframes glow{50%{box-shadow:0 0 28px rgba(134,239,172,.8)}}@keyframes sh{to{background-position:-200% 0}}@keyframes in{from{opacity:0;transform:translateY(8px)}}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-bottom:140px}}
+@media (max-width:700px){.app{flex-direction:column}.side{width:auto;height:auto;flex-direction:row;overflow-x:auto;position:static}.side em,.side .brand{display:none}.col .side{width:auto}.page{padding:12px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script>
+const h=React.createElement,{useState,useEffect,useContext,createContext,Fragment}=React;
+const D=(c,...k)=>{let p={className:c};if(k[0]&&typeof k[0]=='object'&&!k[0].$$typeof&&!Array.isArray(k[0]))p={...p,...k.shift()};return h('div',p,...k)};
+const Ctx=createContext();
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ===== API integration points (FastAPI). Set the base URL in Settings. Empty = demo data. ===== */
+const API={base:ls.get('av_api')||'',ep:{ndvi:'/api/ndvi',blight:'/api/blight',yield:'/api/yield',weather:'/api/weather',prices:'/api/prices',assistant:'/api/assistant'}};
+
+/* ===== demo data (kept apart from components) – ILLUSTRATIVE ONLY ===== */
+const VILLAGE='Demo Village, Demo District';
+const FIELDS0=[{id:1,name:'North Plot',crop:'Potato',ac:2.5,sow:'2026-09-15',stage:'Vegetative'},{id:2,name:'River Field',crop:'Wheat',ac:4,sow:'2026-10-05',stage:'Germination'},{id:3,name:'East Block',crop:'Rice',ac:3,sow:'2026-07-01',stage:'Grain filling'}];
+const NAV=[['overview','Overview','🏠'],['fields','My Fields','🗺️'],['ndvi','NDVI Health Monitor','🛰️'],['disease','Disease Risk','🦠'],['yield','Yield Prediction','🌾'],['water','Smart Irrigation','💧'],['market','Market Prices','📈'],['buyers','Buyer Connect','🤝'],['chat','AI Farmer Assistant','🎙️'],['settings','Settings','⚙️']];
+const DATES=['2026-09-27','2026-10-04','2026-10-11'];
+const frac=x=>x-Math.floor(x),avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
+const nd=(f,d,i)=>+Math.max(.12,Math.min(.88,.42+.4*frac(Math.sin(i*12.9898+f*78.233)*43758.5453)+d*.03-(i%11==3?.18:0))).toFixed(2);
+const grid=(f,d)=>Array.from({length:48},(_,i)=>nd(f,d,i));
+const ncol=v=>v<.3?'#dc2626':v<.45?'#f97316':v<.6?'#eab308':v<.72?'#65a30d':'#14532D';
+const trend=f=>[.41,.48,.55,.6,.64,.66,.63,.68].map(v=>+(v+(f-2)*.03).toFixed(2));
+const WK=['W1','W2','W3','W4','W5','W6','W7','W8'];
+const risks=f=>[18,24,41,63,72,55,30].map(v=>Math.min(95,v+(f%3)*4));
+const rl=v=>v<25?'Low':v<50?'Moderate':v<70?'High':'Very High',rc=v=>v<25?'#16a34a':v<50?'#ca8a04':v<70?'#ea580c':'#dc2626';
+const DAY=n=>new Date(Date.now()+n*864e5).toLocaleDateString('en-IN',{weekday:'short',day:'numeric'});
+const BASE={Potato:22,Wheat:3.4,Rice:4.1,Tomato:28},SF={Germination:.7,Vegetative:.85,Flowering:.95,'Grain filling':1,Fruiting:1};
+const ycalc=(c,ac,stage='Vegetative')=>{const e=+(BASE[c]*(SF[stage]||.9)*1.0).toFixed(1);return{e,lo:+(e*.85).toFixed(1),hi:+(e*1.12).toFixed(1),tot:+(e*ac*.4047).toFixed(1)}};
+const CROPS=['Potato','Wheat','Rice','Tomato'],STAGES=['Germination','Vegetative','Flowering','Fruiting','Grain filling'];
+const MKTS=[['Demo Mandi 1',12],['Demo Mandi 2',28],['Demo Mandi 3',45],['Demo Mandi 4',70]];
+const price=(c,m,i)=>Math.round((({Potato:1500,Wheat:2300,Rice:2100,Tomato:1800})[c]*(0.9+.05*i+.03*m))/10)*10;
+const BUYERS=[['Demo Buyer A','Wholesaler','Potato, Wheat'],['Demo Buyer B','Retailer','Tomato'],['Demo Buyer C','Food processor','Potato'],['Demo Buyer D','Local buyer','Rice, Wheat'],['Demo Buyer E','Wholesaler','Rice']];
+const TIPS={Potato:['Inspect lower leaves in the early morning for spots or water-soaked patches.','Improve air flow; avoid evening irrigation when humid weather is forecast.','Before any spray, ask your local agriculture officer which product is approved for your crop and area.'],Wheat:['Walk the field and check leaves for rust-coloured or yellow patches.','Avoid waterlogging near the field edges.','Confirm any treatment with your local agriculture officer.'],Rice:['Check for leaf spots on young leaves and keep water levels steady.','Avoid excess nitrogen when humid weather is forecast.','Ask your local agriculture officer before applying any product.'],Tomato:['Check for leaf spots and wilting in the morning.','Stake plants for air flow; water at the base, not on leaves.','Ask your local agriculture officer before using any treatment.']};
+const LANGS={en:{n:'English',v:'en-IN'},hi:{n:'हिन्दी',v:'hi-IN'}};
+
+/* ===== reusable UI ===== */
+const Badge=({live})=>h('span',{className:'tag'+(live?' live':'')},live?'LIVE DATA':'SAMPLE DATA · not live');
+function Count({to,dec=0,suf=''}){const[v,setV]=useState(0);useEffect(()=>{let r,t0;const f=t=>{t0=t0||t;const p=Math.min(1,(t-t0)/900);setV(to*p);if(p<1)r=requestAnimationFrame(f)};r=requestAnimationFrame(f);return()=>cancelAnimationFrame(r)},[to]);return v.toFixed(dec)+suf}
+function Load({k,fb,children}){const[s,set]=useState(null),key=JSON.stringify(fb);
+ useEffect(()=>{let off=false;set(null);const done=(d,live)=>!off&&set({d,live});
+  if(API.base)fetch(API.base+API.ep[k]).then(r=>r.ok?r.json():Promise.reject()).then(d=>done(d,true)).catch(()=>done(fb,false));
+  else setTimeout(()=>done(fb,false),300);return()=>{off=true}},[k,key]);
+ return s?h(Fragment,null,h(Badge,{live:s.live}),children(s.d)):D('card sk');}
+function Modal({t,x,children}){useEffect(()=>{const f=e=>e.key=='Escape'&&x();addEventListener('keydown',f);return()=>removeEventListener('keydown',f)},[]);
+ return h('div',{className:'mod',onClick:x},h('div',{className:'dlg',role:'dialog','aria-modal':true,'aria-label':t,onClick:e=>e.stopPropagation()},h('h3',null,t),children,h('p',null,h('button',{className:'bt ghost',onClick:x},'Close'))));}
+function Line({series,labels,unit='',H=130}){const[i,setI]=useState(null),W=320,p=18,n=labels.length,all=series.flatMap(s=>s.d),mn=Math.min(...all),mx=Math.max(...all);
+ const X=j=>p+j*(W-2*p)/(n-1),Y=v=>H-p-(v-mn)/((mx-mn)||1)*(H-2*p);
+ return D('chart',h('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':series.map(s=>(s.n||'')+': '+s.d.join(', ')).join('; '),onPointerMove:e=>{const r=e.currentTarget.getBoundingClientRect();setI(Math.max(0,Math.min(n-1,Math.round(((e.clientX-r.left)/r.width*W-p)/((W-2*p)/(n-1))))))},onPointerLeave:()=>setI(null)},
+  series.map((s,k)=>h('path',{key:k,d:s.d.map((v,j)=>(j?'L':'M')+X(j)+' '+Y(v)).join(''),fill:'none',stroke:s.c,strokeWidth:3,strokeLinejoin:'round',strokeDasharray:s.dash})),
+  i!=null&&h('line',{x1:X(i),x2:X(i),y1:8,y2:H-p,stroke:'#888',strokeDasharray:'3'}),
+  i!=null&&series.map((s,k)=>h('circle',{key:k,cx:X(i),cy:Y(s.d[i]),r:5,fill:s.c}))),
+  D('tip',i==null?'Hover or touch the chart':labels[i]+' · '+series.map(s=>(s.n?s.n+' ':'')+s.d[i]+unit).join(' · ')),
+  D('xl',labels.map(l=>h('span',{key:l},l))));}
+function Bars({v,labels,colors,max=100,unit=''}){return D('bars',v.map((x,i)=>h('div',{key:i,className:'bcol',title:labels[i]+': '+x+unit},h('span',null,x+unit),h('i',{style:{height:(x/max*100)+'%',background:colors[i]||'#16a34a'}}),h('small',null,labels[i]))));}
+function FieldMap({g,sel,setSel}){return h('div',{className:'map',role:'group','aria-label':'Field zones coloured by NDVI'},g.map((v,i)=>h('button',{key:i,className:'cell'+(sel===i?' on':''),style:{background:ncol(v)},'aria-label':'Zone '+(i+1)+' NDVI '+v,title:'Zone '+(i+1)+' · NDVI '+v,onClick:()=>setSel&&setSel(i)})),h('div',{className:'scan'}));}
+const Legend=()=>D('leg',[['#dc2626','<0.30 stressed'],['#f97316','0.30–0.45 low'],['#eab308','0.45–0.60 moderate'],['#65a30d','0.60–0.72 good'],['#14532D','>0.72 dense']].map(x=>h('span',{key:x[0]},h('i',{style:{background:x[0]}}),x[1])));
+const Note=({children})=>h('p',{style:{color:'var(--mut)',fontSize:'.85em'}},children);
+
+/* ===== landing ===== */
+function Landing(){
+ const[t,setT]=useState({x:0,y:0}),cells=Array.from({length:32},(_,i)=>nd(1,2,i));
+ const F=[['🛰️','NDVI Monitoring','Zone-by-zone vegetation health from satellite bands (Sentinel-2 integration-ready).'],['🦠','Disease Forecasting','5–7 day blight early-warning from weather, NDVI trend and crop stage.'],['🌾','Yield Prediction','Harvest range with contributing factors, ready for a trained model.'],['💧','Smart Irrigation','Weather-aware watering schedule with sensor support.'],['🤝','Market & Buyers','Compare prices, list produce, send enquiries.']];
+ const A=[['1 Data','Sentinel-2 · IMD · INSAT-3D · Bhuvan · Open-Meteo · Farmer input','#bfdbfe'],['2 Ingestion','Cloud masking, resampling, features','#fde68a'],['3 Intelligence','NDVI · Blight · Yield · NLP','#bbf7d0'],['4 Backend','FastAPI · Celery · File storage','#ddd6fe'],['5 Delivery','Telegram bot · Web dashboard','#fecaca']];
+ return h(Fragment,null,
+  h('nav',{className:'nav'},h('b',null,'🌱 AgroVision AI'),[['Home','#/'],['Crop Intelligence','#/app/ndvi'],['Disease Detection','#/app/disease'],['Market Prices','#/app/market'],['Farmer Support','#/app/chat']].map(l=>h('a',{key:l[0],href:l[1]},l[0]))),
+  h('header',{className:'hero'},
+   h('div',{className:'blob',style:{width:380,height:380,background:'#16A34A',top:-80,left:-80}}),h('div',{className:'blob',style:{width:300,height:300,background:'#facc15',top:'30%',right:'20%',animationDelay:'-4s'}}),h('div',{className:'farm'},h('i')),
+   h('div',{style:{position:'relative',zIndex:2}},h('span',{className:'tag live'},'🛰️ AI crop intelligence'),h('h1',null,'Grow Smarter. ',h('br'),h('span',null,'Harvest Better.')),
+    h('p',{className:'lead'},'AI-powered crop intelligence that helps you protect your fields, predict your harvest, and make smarter farming decisions.'),
+    D('cta',h('a',{href:'#/app/overview',className:'bt'},'Explore My Farm →'),h('a',{href:'#/app/ndvi',className:'bt ghost'},'Check Crop Health'))),
+   h('div',{style:{position:'relative',zIndex:2},onMouseMove:e=>{const r=e.currentTarget.getBoundingClientRect();setT({x:(e.clientX-r.left)/r.width-.5,y:(e.clientY-r.top)/r.height-.5})},onMouseLeave:()=>setT({x:0,y:0})},
+    D('orbit',h('span',null,'🛰️')),
+    h('div',{className:'prev',style:{transform:'rotateY('+t.x*14+'deg) rotateX('+-t.y*14+'deg)'}},h('b',null,'Live preview '),h(Badge,{live:false}),
+     D('mini',cells.map((v,i)=>h('i',{key:i,style:{background:ncol(v),animationDelay:(i%8)*.2+'s'}})),D('scan')),
+     D('pm',h('span',null,'🌿 Vegetation Health'),h('span',null,h(Count,{to:.68,dec:2}))),D('pm',h('span',null,'🦠 Blight Risk'),h('span',null,'High (day 5)')),D('pm',h('span',null,'🌾 Predicted Yield'),h('span',null,h(Count,{to:18.7,dec:1}),' t/ha'))))),
+  h('section',{className:'sec'},h('h2',null,'Everything your farm needs'),D('sub','Five connected modules, one clear journey.'),
+   D('feat',F.map(f=>h('div',{key:f[1],className:'fc',onMouseMove:e=>{const r=e.currentTarget.getBoundingClientRect();e.currentTarget.style.setProperty('--x',e.clientX-r.left+'px');e.currentTarget.style.setProperty('--y',e.clientY-r.top+'px')}},D('ic',f[0]),h('h3',null,f[1]),h('p',null,f[2]))))),
+  h('section',{className:'sec',style:{background:'var(--card)'}},h('h2',null,'How the platform is designed'),D('sub','Target architecture. This demo implements only the dashboard layer; no live data feeds or models are connected.'),
+   D('arch',A.map(a=>h('div',{key:a[0],style:{background:a[2],animationDelay:a[0][0]*.6+'s'}},a[0],h('small',null,a[1]))))),
+  h('footer',{className:'foot'},D('',h('b',null,'AgroVision AI'),h('p',null,'Sample-data demo of a smart farming platform.')),D('',h('b',null,'Support'),h('p',null,h('a',{href:'#/app/chat'},'Ask Kisan AI Saathi'))),D('',h('b',null,'Contact'),h('p',null,'support@your-domain.example (placeholder)')),D('',h('b',null,'Platform'),h('p',null,'All figures are illustrative until real feeds are connected.'))));
+}
+
+/* ===== dashboard pages ===== */
+function Overview(){
+ const S=useContext(Ctx),f=S.field,g=grid(f.id,2),[sel,setSel]=useState(null),[m,setM]=useState(null),[img,setImg]=useState(null),rk=risks(f.id),y=ycalc(f.crop,f.ac,f.stage),mx=Math.max(...rk);
+ return h(Fragment,null,
+  D('',h('h2',null,'Welcome back, Farmer 👋'),h('p',null,f.name+' · '+VILLAGE+' '),h(Badge,{live:false})),
+  D('steps',['overview','ndvi','disease','yield','water','market','buyers'].map((p,i)=>h('a',{key:p,href:'#/app/'+p},(i+1)+'. '+NAV.find(n=>n[0]==p)[1]))),
+  D('wx',D('','☀️ ',h('b',null,'27°C')),D('',h('span',null,'Rain chance'),h('b',null,'60%')),D('',h('span',null,'Humidity'),h('b',null,'78%')),D('',h('span',null,'Wind'),h('b',null,'12 km/h')),h('span',{className:'tag'},'Demo values')),
+  D('kpis',[['🌿','Vegetation Health',h(Count,{to:avg(g),dec:2}),'NDVI avg'],['🦠','Blight Risk',rl(mx),'peak '+mx+'/100'],['🌾','Estimated Yield',h(Fragment,null,h(Count,{to:y.e,dec:1}),' t/ha'),'illustrative'],['💧','Water Usage',h(Fragment,null,h(Count,{to:42,suf:' kL'})),'this week, demo']].map(k=>D('card kpi',h('span',null,k[0]+' '+k[1]),h('b',null,k[2]),h('small',null,k[3])))),
+  D('g',
+   D('card',h('h3',null,'Field map'),h(FieldMap,{g,sel,setSel}),Legend(),h(Note,null,sel!=null?'Zone '+(sel+1)+': NDVI '+g[sel]+(g[sel]<.45?' – please inspect':' – looks fine'):'Tap a zone. Illustrative demo data, not satellite observations.')),
+   D('card',h('h3',null,'Vegetation health trend'),h(Load,{k:'ndvi',fb:trend(f.id)},d=>h(Line,{series:[{d,c:'#16a34a'}],labels:WK}))),
+   D('card',h('h3',null,'7-day disease risk'),h(Load,{k:'blight',fb:rk},d=>h(Bars,{v:d,labels:d.map((_,i)=>DAY(i)),colors:d.map(rc)}))),
+   D('card',h('h3',null,'Yield forecast (t/ha)'),h(Load,{k:'yield',fb:y},d=>h(Line,{series:[{d:[d.lo*.9,d.lo,d.lo*1.05,d.lo*1.1],c:'#ea580c',dash:'4',n:'Low'},{d:[d.e*.9,d.e,d.e*1.03,d.e*1.06].map(v=>+v.toFixed(1)),c:'#16a34a',n:'Expected'},{d:[d.hi*.9,d.hi,d.hi*1.03,d.hi*1.05],c:'#2563eb',dash:'4',n:'High'}].map(s=>({...s,d:s.d.map(v=>+(+v).toFixed(1))})),labels:['Now','+2w','+4w','Harvest']})))),
+  D('g',
+   D('card',h('h3',null,'Recommended actions'),[['High','Inspect zones with NDVI below 0.45 this week.','#dc2626'],['High','Check '+f.crop+' leaves on '+DAY(3)+' – humid spell forecast.','#ea580c'],['Medium','Skip irrigation on rain days; re-check soil first.','#ca8a04'],['Low','Compare mandi prices before listing produce.','#16a34a']].map((a,i)=>D('row',{key:i},h('span',{key:1,className:'pill',style:{background:a[2]}},a[0]),h('span',{key:2},a[1])))),
+   D('card',h('h3',null,'Quick actions'),D('chips',h('button',{onClick:()=>setM('up')},'📷 Upload crop image'),h('button',{onClick:()=>location.hash='#/app/market'},'📈 Check market prices'),h('button',{onClick:()=>location.hash='#/app/chat'},'🎙️ Ask AI assistant')))),
+  m=='up'&&h(Modal,{t:'Upload crop image',x:()=>setM(null)},h('input',{type:'file',accept:'image/*','aria-label':'Crop image',onChange:e=>e.target.files[0]&&setImg(URL.createObjectURL(e.target.files[0]))}),img&&h('img',{src:img,alt:'Your crop',style:{width:'100%',borderRadius:12,marginTop:10}}),h('p',{className:'err'},'Image stays on your device. A disease-detection model is not connected, so no diagnosis is made. Show the photo to your local agriculture officer.')));
+}
+function Fields(){
+ const S=useContext(Ctx),[n,setN]=useState({name:'',crop:'Potato',ac:'',sow:'',stage:'Vegetative'}),[e,setE]=useState('');
+ const add=()=>{if(!n.name.trim()||!(+n.ac>0)||!n.sow){setE('Please enter a name, acreage above 0, and a sowing date.');return}setE('');const id=Math.max(...S.fields.map(x=>x.id))+1;S.setFields([...S.fields,{...n,id,ac:+n.ac}]);S.setFid(id);setN({...n,name:'',ac:'',sow:''})};
+ return D('g',D('card',h('h3',null,'My Fields'),h('table',null,h('thead',null,h('tr',null,['Field','Crop','Acres','Sown','Stage'].map(x=>h('th',{key:x},x)))),h('tbody',null,S.fields.map(f=>h('tr',{key:f.id,className:f.id==S.fid?'sel':'',onClick:()=>S.setFid(f.id),tabIndex:0,onKeyDown:e=>e.key=='Enter'&&S.setFid(f.id)},[f.name,f.crop,f.ac,f.sow,f.stage].map((x,i)=>h('td',{key:i},x)))))),h(Note,null,'Select a row to make it the active field everywhere.')),
+  D('card',h('h3',null,'Add a field'),h('label',null,'Field name'),h('input',{value:n.name,onChange:e=>setN({...n,name:e.target.value})}),h('label',null,'Crop'),h('select',{value:n.crop,onChange:e=>setN({...n,crop:e.target.value})},CROPS.map(c=>h('option',{key:c},c))),h('label',null,'Acres'),h('input',{type:'number',min:0,value:n.ac,onChange:e=>setN({...n,ac:e.target.value})}),h('label',null,'Sowing date'),h('input',{type:'date',value:n.sow,onChange:e=>setN({...n,sow:e.target.value})}),h('label',null,'Growth stage'),h('select',{value:n.stage,onChange:e=>setN({...n,stage:e.target.value})},STAGES.map(c=>h('option',{key:c},c))),e&&h('p',{className:'err',role:'alert'},e),h('p',null,h('button',{className:'bt',onClick:add},'＋ Add field'))));
+}
+function Ndvi(){
+ const S=useContext(Ctx),f=S.field,[di,setDi]=useState(2),[cmp,setCmp]=useState(false),[sel,setSel]=useState(null),g=grid(f.id,di),low=g.map((v,i)=>[v,i]).filter(x=>x[0]<.45);
+ return h(Fragment,null,h('h2',null,'🛰️ NDVI Health Monitor'),h(Badge,{live:false}),h(Note,null,'NDVI uses near-infrared and red-light reflectance to estimate vegetation greenness and activity. The map below is illustrative demo data, not a satellite observation. Integration point: '+API.ep.ndvi+'.'),
+  D('tabs',DATES.map((d,i)=>h('button',{key:d,className:i==di?'on':'',onClick:()=>setDi(i)},d)),h('button',{className:cmp?'on':'',onClick:()=>setCmp(!cmp)},'⇄ Compare with '+DATES[0])),
+  D('g',D('card',h('h3',null,f.name+' · '+DATES[di]),h(FieldMap,{g,sel,setSel}),Legend()),
+   cmp&&D('card',h('h3',null,DATES[0]+' (earlier)'),h(FieldMap,{g:grid(f.id,0)}),Legend()),
+   D('card',h('h3',null,'Field details'),[['Crop',f.crop],['Acreage',f.ac+' acres'],['Sown',f.sow],['Stage',f.stage],['Average NDVI',avg(g).toFixed(2)]].map(r=>D('row',{key:r[0]},h('b',{key:1},r[0]),h('span',{key:2},r[1]))),sel!=null&&h('p',{className:g[sel]<.45?'err':'okk'},'Zone '+(sel+1)+': NDVI '+g[sel]+(g[sel]<.45?' – walk this part of the field and check plants and soil.':' – no action needed.'))),
+   D('card',h('h3',null,'Needs attention ('+low.length+')'),low.length?D('chips',low.map(x=>h('button',{key:x[1],onClick:()=>setSel(x[1])},'Zone '+(x[1]+1)+' · '+x[0]))):h('p',{className:'okk'},'No low-NDVI zones on this date.')),
+   D('card',h('h3',null,'Historical trend'),h(Load,{k:'ndvi',fb:trend(f.id)},d=>h(Line,{series:[{d,c:'#16a34a'}],labels:WK}))),
+   D('card',h('h3',null,'Field-by-field comparison'),h(Bars,{v:S.fields.map(x=>+avg(grid(x.id,di)).toFixed(2)),labels:S.fields.map(x=>x.name),colors:S.fields.map(x=>ncol(avg(grid(x.id,di)))),max:1}))));
+}
+function Disease(){
+ const S=useContext(Ctx),f=S.field,rk=risks(f.id),pk=rk.indexOf(Math.max(...rk)),ind=[['💧 Humidity','78%'],['🌧️ Rain','14 mm / 7 d'],['🌡️ Temperature','19–27°C'],['🍃 Leaf wetness','Not measured']];
+ return h(Fragment,null,h('h2',null,'🦠 Blight Risk – next 7 days'),h(Badge,{live:false}),
+  h('p',{className:'err'},'Early-warning estimate, not a confirmed diagnosis. These scores are illustrative; real forecasts need a crop-specific model and validated local data ('+API.ep.blight+').'),
+  D('g',D('card',h('h3',null,'Risk timeline · '+f.crop),h(Load,{k:'blight',fb:rk},d=>h(Bars,{v:d,labels:d.map((_,i)=>DAY(i)),colors:d.map(rc)})),D('chips',rk.map((v,i)=>h('span',{key:i,className:'pill',style:{background:rc(v)}},DAY(i)+' '+rl(v))))),
+   D('card',h('h3',null,'Conditions (sample)'),ind.map(x=>D('row',{key:x[0]},h('span',{key:1},x[0]),h('b',{key:2},x[1]))),D('row',h('span',null,'🌿 NDVI change (2 wks)'),h('b',null,'−0.04 ▼ (sample)'))),
+   D('card',h('h3',null,'Field summary'),h('p',null,f.name+': peak risk '+rl(rk[pk])+' around '+DAY(pk)+'. Main factors: humid spell with rain, a slight NDVI dip, and '+f.stage.toLowerCase()+' stage.'),h('p',{className:'okk'},'Suggested inspection: '+DAY(Math.max(0,pk-1))+' and '+DAY(pk))),
+   D('card',h('h3',null,'Preventive steps for '+f.crop),h('ol',null,TIPS[f.crop].map(t=>h('li',{key:t},t))))));
+}
+function Yield(){
+ const S=useContext(Ctx),[c,setC]=useState(S.field.crop),[ac,setAc]=useState(S.field.ac),[st,setSt]=useState(S.field.stage),[sow,setSow]=useState(S.field.sow),[m,setM]=useState(false),y=ycalc(c,+ac||0,st);
+ return h(Fragment,null,h('h2',null,'🌾 Yield Prediction'),h(Badge,{live:false}),h(Note,null,'Illustrative output from a simple demo formula until a trained model is connected ('+API.ep.yield+'). No confidence interval is shown because no model supplies one.'),
+  D('g',D('card',h('h3',null,'Inputs'),h('label',null,'Crop'),h('select',{value:c,onChange:e=>setC(e.target.value)},CROPS.map(x=>h('option',{key:x},x))),h('label',null,'Field'),h('select',{value:S.fid,onChange:e=>{const f=S.fields.find(x=>x.id==e.target.value);S.setFid(f.id);setC(f.crop);setAc(f.ac);setSt(f.stage);setSow(f.sow)}},S.fields.map(x=>h('option',{key:x.id,value:x.id},x.name))),h('label',null,'Acreage'),h('input',{type:'number',min:0,value:ac,onChange:e=>setAc(e.target.value)}),h('label',null,'Sowing date'),h('input',{type:'date',value:sow,onChange:e=>setSow(e.target.value)}),h('label',null,'Growth stage'),h('select',{value:st,onChange:e=>setSt(e.target.value)},STAGES.map(x=>h('option',{key:x},x)))),
+   D('card',h('h3',null,'Estimate'),h('div',{className:'kpi'},h('b',null,y.e+' t/ha'),h('span',null,'Range '+y.lo+' – '+y.hi+' t/ha')),h('div',{className:'kpi',style:{marginTop:10}},h('b',null,y.tot+' t'),h('span',null,'Total production for '+(+ac||0)+' acres')),h(Note,null,'Regional benchmark: not available in demo.'),h('p',null,h('button',{className:'bt',onClick:()=>setM(true)},'✨ Improve My Yield'))),
+   D('card',h('h3',null,'Forecast range (t/ha)'),h(Line,{series:[{d:[y.lo*.9,y.lo,y.lo*1.04,y.lo*1.08].map(v=>+v.toFixed(1)),c:'#ea580c',dash:'4',n:'Low'},{d:[y.e*.9,y.e,y.e*1.03,y.e*1.06].map(v=>+v.toFixed(1)),c:'#16a34a',n:'Expected'},{d:[y.hi*.9,y.hi,y.hi*1.03,y.hi*1.05].map(v=>+v.toFixed(1)),c:'#2563eb',dash:'4',n:'High'}],labels:['Now','+2w','+4w','Harvest']})),
+   D('card',h('h3',null,'Key factors (sample weights, %)'),h(Bars,{v:[30,22,16,14,10,8],labels:['NDVI','Rain','Temp','Irrig.','Soil','Stage'],colors:['#14532D','#16a34a','#65a30d','#2563eb','#a16207','#7c3aed'],max:40,unit:'%'}))),
+  m&&h(Modal,{t:'Improve My Yield',x:()=>setM(false)},h('ol',null,['Fix low-NDVI zones first: check soil, water and pests there.','Irrigate on time but skip rain days.','Control weeds and keep nutrients balanced as your local agriculture office advises.','Protect against disease in humid spells (see Disease Risk).'].map(t=>h('li',{key:t},t)))));
+}
+function Water(){
+ const[m,setM]=useState(false),rain=[0,2,12,18,4,0,0],irr=[8,6,0,0,5,8,8];
+ return h(Fragment,null,h('h2',null,'💧 Smart Irrigation'),h(Badge,{live:false}),
+  D('g',D('card',h('h3',null,'Soil moisture'),h('p',{className:'err'},'No sensor connected. Showing no soil-moisture reading.'),h('button',{className:'bt',onClick:()=>setM(true)},'Connect a sensor')),
+   D('card',h('h3',null,'Recommendation (weather estimate)'),h('p',{className:'okk'},'Rain likely on '+DAY(2)+'–'+DAY(3)+'. Irrigate '+DAY(0)+' and '+DAY(1)+' lightly, skip the rain days, then re-check soil.'),h('p',null,'Estimated water saving: ~18% (demo)'),h(Note,null,'Field need (sample): 6 mm/day for the current stage.')),
+   D('card',h('h3',null,'7-day rainfall (mm)'),h(Bars,{v:rain,labels:rain.map((_,i)=>DAY(i)),colors:rain.map(()=>'#2563eb'),max:20})),
+   D('card',h('h3',null,'7-day irrigation plan (mm)'),h(Bars,{v:irr,labels:irr.map((_,i)=>DAY(i)),colors:irr.map(()=>'#16a34a'),max:10})),
+   D('card',h('h3',null,'Water use vs. last season (kL)'),h(Line,{series:[{d:[38,44,41,46,42,40],c:'#16a34a',n:'This'},{d:[48,52,50,55,51,49],c:'#8a9a8c',dash:'4',n:'Last'}],labels:['W1','W2','W3','W4','W5','W6']}))),
+  m&&h(Modal,{t:'Connect a soil sensor',x:()=>setM(false)},h('p',null,'Sensor support is not implemented in this demo. A connected sensor would send readings to your backend, which this page would read and label as “sensor reading”.')));
+}
+function Market(){
+ const[c,setC]=useState('Potato'),[q,setQ]=useState(''),[d,setD]=useState(100),[sel,setSel]=useState(0),rows=MKTS.map((m,i)=>({n:m[0],km:m[1],p:price(c,m[1],i),i})).filter(r=>r.km<=d&&r.n.toLowerCase().includes(q.toLowerCase()));
+ return h(Fragment,null,h('h2',null,'📈 Market Prices'),h(Badge,{live:false}),h(Note,null,'Sample prices from a demo dataset, not real mandi data. Plug a verified feed into '+API.ep.prices+'.'),
+  D('tabs',CROPS.map(x=>h('button',{key:x,className:x==c?'on':'',onClick:()=>setC(x)},x))),
+  D('g',D('card',h('input',{placeholder:'Search mandi…','aria-label':'Search mandi',value:q,onChange:e=>setQ(e.target.value)}),h('label',null,'Within '+d+' km'),h('input',{type:'range',min:10,max:100,value:d,onChange:e=>setD(+e.target.value)}),
+    rows.length?h('table',null,h('thead',null,h('tr',null,['Mandi','Km','₹/quintal','Source','Updated'].map(x=>h('th',{key:x},x)))),h('tbody',null,rows.map(r=>h('tr',{key:r.n,className:sel==r.i?'sel':'',onClick:()=>setSel(r.i)},h('td',null,r.n),h('td',null,r.km),h('td',null,h('b',null,'₹'+r.p)),h('td',null,'Demo dataset'),h('td',null,'—'))))):h('p',{className:'err'},'No mandis match. Try a larger distance.')),
+   D('card',h('h3',null,'Price trend · '+MKTS[sel][0]),h(Line,{series:[{d:[0,1,2,3,4,5].map(k=>price(c,MKTS[sel][1],sel)+[-40,20,-10,30,0,k*0+15][k]),c:'#16a34a'}],labels:['W1','W2','W3','W4','W5','W6'],unit:' ₹'}))));
+}
+function Buyers(){
+ const S=useContext(Ctx),[tab,setTab]=useState('find'),[type,setType]=useState('All'),[m,setM]=useState(null),[msg,setMsg]=useState(''),[l,setL]=useState({crop:'Potato',qty:'',grade:'A',price:''}),[e,setE]=useState(''),ST=['Sent','Seen','Replied','Confirmed'];
+ const bs=BUYERS.filter(b=>type=='All'||b[1]==type);
+ return h(Fragment,null,h('h2',null,'🤝 Buyer Connect'),h(Badge,{live:false}),h(Note,null,'Buyer cards are placeholders, not real listings. Enquiries are stored only in this browser tab.'),
+  D('tabs',[['find','Discover buyers'],['list','List produce'],['enq','Enquiries ('+S.enq.length+')']].map(t=>h('button',{key:t[0],className:tab==t[0]?'on':'',onClick:()=>setTab(t[0])},t[1]))),
+  tab=='find'&&h(Fragment,null,h('select',{value:type,'aria-label':'Buyer type',onChange:e=>setType(e.target.value),style:{maxWidth:220,marginBottom:12}},['All','Wholesaler','Retailer','Food processor','Local buyer'].map(x=>h('option',{key:x},x))),D('g',bs.map(b=>D('card',h('h3',null,b[0]),h('p',null,b[1]+' · wants: '+b[2]),h('button',{className:'bt',onClick:()=>{setM(b);setMsg('')}},'✉️ Send enquiry'))),!bs.length&&h('p',null,'No buyers of this type.'))),
+  tab=='list'&&D('g',D('card',h('h3',null,'New listing'),h('label',null,'Crop'),h('select',{value:l.crop,onChange:e=>setL({...l,crop:e.target.value})},CROPS.map(x=>h('option',{key:x},x))),h('label',null,'Quantity (quintals)'),h('input',{type:'number',min:0,value:l.qty,onChange:e=>setL({...l,qty:e.target.value})}),h('label',null,'Grade'),h('select',{value:l.grade,onChange:e=>setL({...l,grade:e.target.value})},['A','B','C'].map(x=>h('option',{key:x},x))),h('label',null,'Expected price (₹/quintal)'),h('input',{type:'number',min:0,value:l.price,onChange:e=>setL({...l,price:e.target.value})}),e&&h('p',{className:e[0]=='✓'?'okk':'err',role:'alert'},e),h('p',null,h('button',{className:'bt',onClick:()=>{if(!(+l.qty>0)||!(+l.price>0)){setE('Enter a quantity and price above 0.');return}S.setLst([...S.lst,{...l,id:Date.now()}]);setE('✓ Listing added.');setL({...l,qty:'',price:''})}},'Publish listing'))),
+   D('card',h('h3',null,'My listings'),S.lst.length?S.lst.map(x=>D('row',{key:x.id},h('span',{key:1},x.crop+' · '+x.qty+' q · grade '+x.grade+' · ₹'+x.price),h('span',{key:2,className:'pill',style:{background:'#16a34a'}},'Available'),h('button',{key:3,className:'bt ghost sm',onClick:()=>S.setLst(S.lst.filter(y=>y.id!=x.id))},'Remove'))):h('p',null,'Nothing listed yet.'))),
+  tab=='enq'&&(S.enq.length?S.enq.map(x=>D('card',{key:x.id},h('b',null,x.to),h('p',null,x.msg),D('stp',ST.map((s,i)=>h('span',{key:s,className:i==0&&!x.w?'d':''},s))),h('p',null,x.w?'Withdrawn':'Status: Sent (demo – not delivered to a real buyer)'),!x.w&&h('button',{className:'bt ghost sm',onClick:()=>S.setEnq(S.enq.map(y=>y.id==x.id?{...y,w:1}:y))},'Withdraw'))):h('p',null,'No enquiries yet. Discover buyers to send one.')),
+  m&&h(Modal,{t:'Enquiry to '+m[0],x:()=>setM(null)},h('label',null,'Message'),h('textarea',{rows:3,value:msg,onChange:e=>setMsg(e.target.value),placeholder:'e.g. 10 quintals of '+S.field.crop+', grade A'}),h('p',null,h('button',{className:'bt',onClick:()=>{if(!msg.trim())return;S.setEnq([...S.enq,{id:Date.now(),to:m[0],msg}]);setM(null);setTab('enq')}},'Send'))));
+}
+/* NLP assistant: replace answer() with a call to API.ep.assistant. */
+function answer(q,x,lang){const s=q.toLowerCase(),f=x.field,g=avg(grid(f.id,2)).toFixed(2),rk=Math.max(...risks(f.id)),y=ycalc(f.crop,f.ac,f.stage),hi=lang=='hi',n=x.n;
+ const R=[[/daag|bimari|rog|disease|blight|spot|patt|spots/,{en:['For your '+f.crop+' in '+f.name+': spots can have many causes, so I cannot diagnose from text.\n1. Check lower leaves in the morning.\n2. Take a clear photo.\n3. Show it to your local agriculture officer before any spray.','Are the spots on old or new leaves?'],hi:['आपके '+f.name+' के '+f.crop+' में दाग कई कारणों से हो सकते हैं, इसलिए मैं यहाँ से पक्की पहचान नहीं कर सकता।\n1. सुबह नीचे के पत्ते देखें।\n2. साफ़ फोटो लें।\n3. कोई भी दवा डालने से पहले कृषि अधिकारी को दिखाएँ।','दाग पुराने पत्तों पर हैं या नए पर?']}],
+ [/ndvi|vegetation|health|sehat/,{en:['Demo NDVI for '+f.name+' averages '+g+'. Zones below 0.45 need a walk-through. This is sample data, not a satellite reading.','Want to open the NDVI map?'],hi:[f.name+' का डेमो NDVI औसत '+g+' है। 0.45 से कम वाले हिस्सों को जाकर देखें। यह नमूना जानकारी है, उपग्रह की नहीं।','क्या NDVI नक्शा खोलूँ?']}],
+ [/yield|paidawar|harvest|kitni/,{en:['Illustrative estimate for '+f.crop+' ('+f.ac+' acres): about '+y.e+' t/ha, '+y.tot+' t in total (range '+y.lo+'–'+y.hi+' t/ha). No trained model is connected yet.','Should I show what could improve it?'],hi:[f.crop+' ('+f.ac+' एकड़) का उदाहरण अनुमान: लगभग '+y.e+' टन/हेक्टेयर, कुल '+y.tot+' टन। अभी कोई प्रशिक्षित मॉडल जुड़ा नहीं है।','क्या सुधार के तरीके बताऊँ?']}],
+ [/mandi|bhav|price|rate|sell/,{en:['I have only sample prices, not live mandi data. Open Market Prices to compare demo mandis, and check your local mandi before selling.','Which crop do you want to compare?'],hi:['मेरे पास सिर्फ़ नमूना भाव हैं, असली मंडी भाव नहीं। बेचने से पहले अपनी स्थानीय मंडी में जाँच करें।','किस फसल की तुलना करें?']}],
+ [/irrigat|paani|pani|sinchai|water/,{en:['Weather estimate (no soil sensor): rain is likely on '+DAY(2)+'–'+DAY(3)+'. Water lightly today, skip rain days, and check the soil by hand first.','Is your field flat or sloping?'],hi:['मौसम का अनुमान (मिट्टी सेंसर नहीं): '+DAY(2)+'–'+DAY(3)+' को बारिश संभव है। आज हल्का पानी दें, बारिश के दिन छोड़ें, और पहले मिट्टी हाथ से देखें।','आपका खेत समतल है या ढलान वाला?']}],
+ [/weather|mausam|barish|rain/,{en:['Demo weather: 27°C, 60% rain chance, 78% humidity. Connect a weather API for real forecasts.','Want the 7-day plan?'],hi:['डेमो मौसम: 27°C, बारिश 60%, नमी 78%। असली पूर्वानुमान के लिए मौसम API जोड़ें।','7 दिन की योजना देखें?']}]];
+ const r=R.find(a=>a[0].test(s));
+ return r?r[1][hi?'hi':'en']:(hi?['मैं आपके '+f.crop+' के बारे में बीमारी, NDVI, पैदावार, भाव, सिंचाई या मौसम पर मदद कर सकता हूँ। कृपया इनमें से कुछ पूछें।','आप क्या जानना चाहते हैं?']:['I can help with disease, NDVI, yield, prices, irrigation or weather for your '+f.crop+'. Try one of those.','What would you like to know?']);}
+function Chat(){
+ const S=useContext(Ctx),[lang,setLang]=useState('en'),[tts,setTts]=useState(false),[txt,setTxt]=useState(''),[msgs,setMsgs]=useState([{r:'a',t:'Namaste! I am Kisan AI Saathi (demo mode). Ask about '+S.field.name+'.'}]),[err,setErr]=useState('');
+ const send=q=>{q=q.trim();if(!q)return;const[a,fu]=answer(q,{field:S.field},lang);setMsgs(m=>[...m,{r:'u',t:q},{r:'a',t:a+'\n\n❓ '+fu}]);setTxt('');if(tts&&'speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(a);u.lang=LANGS[lang].v;speechSynthesis.speak(u)}};
+ const mic=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){setErr('Voice input is not supported in this browser. Please type.');return}setErr('');try{const r=new SR();r.lang=LANGS[lang].v;r.onresult=e=>send(e.results[0][0].transcript);r.onerror=()=>setErr('Could not hear you. Please try again or type.');r.start()}catch(x){setErr('Voice input failed. Please type.')}};
+ useEffect(()=>{const el=document.getElementById('chatbox');el&&(el.scrollTop=el.scrollHeight)},[msgs]);
+ return h(Fragment,null,h('h2',null,'🎙️ Kisan AI Saathi'),h(Note,null,'Demo mode: rule-based replies using your selected field ('+S.field.name+', '+S.field.crop+'). Connect '+API.ep.assistant+' for an NLP/LLM backend.'),
+  D('card',D('row',h('select',{key:1,value:lang,'aria-label':'Language',onChange:e=>setLang(e.target.value),style:{maxWidth:160}},Object.keys(LANGS).map(k=>h('option',{key:k,value:k},LANGS[k].n))),h('label',{key:2,style:{margin:0}},h('input',{type:'checkbox',style:{width:'auto'},checked:tts,onChange:e=>setTts(e.target.checked)}),' 🔊 Read answers aloud')),
+   h('div',{className:'chat',id:'chatbox','aria-live':'polite'},msgs.map((m,i)=>D('msg '+m.r,{key:i},m.t)).map((el,i)=>h('div',{key:i,className:el.props.className},msgs[i].t))),
+   D('chips',[['🦠 Crop disease','Mere '+S.field.crop.toLowerCase()+' ki fasal mein daag aa rahe hain, kya karun?'],['🛰️ NDVI','What is the vegetation health of my field?'],['💧 Irrigation','Should I irrigate my field tomorrow?'],['🌦️ Weather','Will it rain this week?'],['📈 Prices','Aaj meri fasal ka mandi bhav kya hai?']].map(c=>h('button',{key:c[0],onClick:()=>send(c[1])},c[0]))),
+   err&&h('p',{className:'err',role:'alert'},err),
+   D('row',h('input',{key:1,placeholder:'Type your question…','aria-label':'Your question',value:txt,onChange:e=>setTxt(e.target.value),onKeyDown:e=>e.key=='Enter'&&send(txt)}),h('button',{key:2,className:'bt ghost','aria-label':'Voice input',onClick:mic},'🎤'),h('button',{key:3,className:'bt',onClick:()=>send(txt)},'Send'))));
+}
+function Settings(){
+ const S=useContext(Ctx),[api,setApi]=useState(API.base),[ok,setOk]=useState(false);
+ const INT=[['Sentinel-2 imagery','Red + NIR, 10 m'],['IMD weather','Forecast 5–7 days'],['INSAT-3D','Cloud cover, rainfall, LST'],['ISRO Bhuvan soil data','Soil health'],['Open-Meteo','Global weather API'],['FastAPI + Celery backend','Inference, daily jobs'],['Telegram bot','Alerts and chat']];
+ return D('g',D('card',h('h3',null,'Preferences'),h('label',null,'Theme'),h('select',{value:S.theme,onChange:e=>S.setTheme(e.target.value)},['auto','light','dark'].map(x=>h('option',{key:x},x))),h('label',null,'Backend API base URL'),h('input',{placeholder:'https://your-fastapi.example.com',value:api,onChange:e=>{setApi(e.target.value);setOk(false)}}),h('p',null,h('button',{className:'bt',onClick:()=>{ls.set('av_api',api);API.base=api;setOk(true)}},'Save')),ok&&h('p',{className:'okk',role:'status'},'Saved. Pages now try this server and fall back to sample data if it fails.'),h(Note,null,'Only non-sensitive preferences are stored in this browser.')),
+  D('card',h('h3',null,'Data sources & integrations'),INT.map(i=>D('row',{key:i[0]},h('span',{key:1},h('b',null,i[0]),h('br'),h('small',null,i[1])),h('span',{key:2,className:'tag'},'Not connected')))));
+}
+
+/* ===== shell + router ===== */
+function Shell({page}){
+ const S=useContext(Ctx),[al,setAl]=useState(false),P={overview:Overview,fields:Fields,ndvi:Ndvi,disease:Disease,yield:Yield,water:Water,market:Market,buyers:Buyers,chat:Chat,settings:Settings}[page]||Overview;
+ return D('app'+(S.col?' col':''),
+  h('aside',{className:'side','aria-label':'Main navigation'},D('brand',h('a',{href:'#/'},'🌱 ',h('b',null,'AgroVision AI'))),NAV.map(n=>h('a',{key:n[0],href:'#/app/'+n[0],className:page==n[0]?'on':'',title:n[1],'aria-current':page==n[0]?'page':undefined},h('span',null,n[2]),h('em',null,n[1])))),
+  D('main',h('header',{className:'top'},h('button',{className:'bt ghost sm','aria-label':'Collapse sidebar',onClick:()=>S.setCol(!S.col)},'☰'),h('select',{'aria-label':'Active field',value:S.fid,onChange:e=>S.setFid(+e.target.value)},S.fields.map(f=>h('option',{key:f.id,value:f.id},f.name+' · '+f.crop))),h(Badge,{live:false}),h('span',{style:{flex:1}}),h('button',{className:'bt ghost sm',onClick:()=>setAl(true)},'🔔 Alerts'),h('button',{className:'bt ghost sm',onClick:()=>S.setTheme(S.theme=='dark'?'light':'dark')},'🌓')),
+   D('page',{key:page},h(P))),
+  al&&h(Modal,{t:'Alerts (sample)',x:()=>setAl(false)},[['High','Humid spell forecast – inspect '+S.field.crop+' on '+DAY(3)],['Medium','Rain likely '+DAY(2)+' – skip irrigation'],['Low','Zones below NDVI 0.45 in '+S.field.name]].map(a=>D('row',{key:a[1]},h('span',{key:1,className:'pill',style:{background:a[0]=='High'?'#dc2626':a[0]=='Medium'?'#ca8a04':'#16a34a'}},a[0]),h('span',{key:2},a[1])))));
+}
+function App(){
+ const[route,setRoute]=useState(location.hash),[fields,setFields]=useState(FIELDS0),[fid,setFid]=useState(1),[col,setCol]=useState(false),[theme,setTheme]=useState(ls.get('av_theme')||'auto'),[enq,setEnq]=useState([]),[lst,setLst]=useState([]);
+ useEffect(()=>{const f=()=>{setRoute(location.hash);window.scrollTo(0,0)};addEventListener('hashchange',f);return()=>removeEventListener('hashchange',f)},[]);
+ useEffect(()=>{theme=='auto'?document.documentElement.removeAttribute('data-theme'):document.documentElement.setAttribute('data-theme',theme);ls.set('av_theme',theme)},[theme]);
+ const field=fields.find(f=>f.id==fid)||fields[0],S={fields,setFields,fid,setFid,field,col,setCol,theme,setTheme,enq,setEnq,lst,setLst},m=route.match(/^#\/app\/?(\w*)/);
+ return h(Ctx.Provider,{value:S},m?h(Shell,{page:m[1]||'overview'}):h(Landing));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>
