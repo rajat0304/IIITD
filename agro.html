@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AgroVision AI – Grow Smarter Harvest Better</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Montserrat:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&family=Raleway:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&family=Archivo:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Comfortaa:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4fbf4;--bg-2:#edf8f1;--card:rgba(255,255,255,.88);--card-strong:#fff;--surface-soft:rgba(255,255,255,.6);--top-bg:rgba(244,251,244,.88);--input-bg:rgba(255,255,255,.75);--ink:#183127;--mut:#53686a;--line:rgba(19,78,74,.12);--mint:#e2f8ea;--em:#17a34a;--btn:#0f9f5f;--btn-2:#f59e0b;--acc:#0e5b39;--purple:#7c3aed;--gold:#fbbf24;--sh:0 20px 50px rgba(16,89,61,.12);--font-body:"Inter","Poppins","Manrope","Noto Sans Devanagari",system-ui,sans-serif;--font-heading:"Space Grotesk","Archivo","Montserrat","Poppins",sans-serif;--font-brand:"Playfair Display","Cormorant Garamond","Libre Baskerville","Georgia",serif;--font-accent:"Nunito","Comfortaa","Raleway","Poppins",sans-serif;--font-display:"Archivo","Space Grotesk","Montserrat",sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+:root[data-theme="dark"]{--bg:#000;--bg-2:#080808;--card:#0d0d0d;--card-strong:#111;--surface-soft:#111;--top-bg:rgba(8,8,8,.92);--input-bg:#101010;--ink:#f5f5f5;--mut:#a3a3a3;--line:rgba(255,255,255,.12);--mint:#171717;--em:#4ade80;--btn:#16a34a;--btn-2:#fbbf24;--acc:#86efac;--purple:#c4b5fd;--gold:#fcd34d;--sh:0 20px 45px rgba(0,0,0,.7);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.5;letter-spacing:-.01em;transition:background-color .2s ease,color .2s ease}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid rgba(34,197,94,.7);outline-offset:2px}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0 0 .45em;line-height:1.1;font-family:var(--font-heading)}
+.hero h1,.hero .tag,.bt,.nav a,.pill,.steps a,.kpi b,.wx b,.foot b,.side .brand,.nav b{font-family:var(--font-accent)}
+.nav b{font-family:var(--font-brand);letter-spacing:.02em}
+p{margin:.35em 0;font-family:var(--font-body)}
+.hero .tag,.bt,.nav a,.pill,.steps a{letter-spacing:.04em;text-transform:uppercase}
+.hero h1{font-family:var(--font-display);font-weight:800;letter-spacing:-.055em}
+.sec h2{font-family:var(--font-brand);font-weight:700;letter-spacing:-.03em}
+.fc h3,.card h3,.dlg h3{font-family:var(--font-display);letter-spacing:-.04em}
+.bt{border:0;background:linear-gradient(135deg,var(--btn),#0b7d4f);color:#fff;padding:11px 18px;border-radius:14px;font-weight:800;letter-spacing:.01em;transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;display:inline-flex;gap:8px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.2);box-shadow:0 10px 25px rgba(15,159,95,.28)}
+.bt:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(15,159,95,.34);filter:saturate(1.08)}
+.bt.ghost{background:rgba(255,255,255,.08);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.bt.sm{padding:7px 12px;font-size:.85em}
+.theme-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:12px;min-width:38px}
+.theme-btn svg{width:17px;height:17px;display:block}
+.theme-btn path,.theme-btn circle,.theme-btn line,.theme-btn polyline{stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.theme-btn .sun-fill{fill:currentColor;stroke:none}
+input,select,textarea{background:var(--input-bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%;transition:border-color .2s ease, box-shadow .2s ease}
+input:focus,select:focus,textarea:focus{border-color:rgba(34,197,94,.7);box-shadow:0 0 0 3px rgba(34,197,94,.12);outline:none}
+label{font-weight:700;font-size:.82em;display:block;margin:8px 0 3px;color:var(--mut)}
+.lang-switch{appearance:none;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.18);padding:8px 12px;border-radius:12px;font-weight:700;min-width:120px;cursor:pointer;outline:none}
+.lang-switch option{color:#183127}
+/* landing */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:6px;padding:12px 22px;background:rgba(9,32,22,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#fff;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.12)}
+.nav b{font-size:1.3em;margin-right:auto;font-family:var(--font-brand);letter-spacing:.02em}.nav a{padding:7px 12px;border-radius:10px;font-weight:700;font-size:.92em;transition:all .2s ease;font-family:var(--font-accent)}.nav a:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+.lang-picker{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(10px);margin-left:auto}
+.lang-picker span{font-size:.72em;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.9;font-family:var(--font-accent)}
+.lang-switch{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 14px;font-weight:700;appearance:none;-webkit-appearance:none;outline:none;font-family:var(--font-accent)}
+.lang-switch option{color:#183127}
+.hero{position:relative;overflow:hidden;min-height:92vh;color:#fff;background:
+  linear-gradient(135deg, rgba(6,45,28,.72), rgba(13,59,41,.62), rgba(13,93,54,.64)),
+  url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat;
+display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;padding:64px 6vw 122px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%, rgba(52,211,153,.25), transparent 25%),radial-gradient(circle at 80% 15%, rgba(251,191,36,.18), transparent 18%),radial-gradient(circle at 75% 75%, rgba(168,85,247,.12), transparent 22%);pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(72px);opacity:.6;animation:drift 12s ease-in-out infinite}
+.farm{position:absolute;left:0;right:0;bottom:0;height:42%;perspective:500px;overflow:hidden}
+.farm i{position:absolute;inset:0;transform:rotateX(64deg) scale(1.8);transform-origin:50% 100%;background:repeating-linear-gradient(90deg,#14532D 0 22px,#1b7a3d 22px 44px);opacity:.8;animation:rows 7s linear infinite}
+.farm:after{content:"";position:absolute;inset:0;background:linear-gradient(#14532D 0%,transparent 60%)}
+.hero h1{font-size:clamp(2.5rem,6vw,4.7rem);font-weight:800;letter-spacing:-.06em;text-shadow:0 10px 30px rgba(0,0,0,.18);font-family:var(--font-heading)}
+.hero h1 span{background:linear-gradient(90deg,#dafbe8,#fef3c7,#d9f99d);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.12em;max-width:36em;opacity:.96;line-height:1.7;font-family:var(--font-body)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.hero .bt.ghost{color:#fff;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.06)}
+.prev{position:relative;z-index:2;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(16px);border-radius:26px;padding:22px;transition:transform .15s;box-shadow:0 30px 60px rgba(0,0,0,.28)}
+.prev:hover{transform:translateY(-4px)}
+.orbit{position:absolute;inset:-48px;border:1px dashed rgba(255,255,255,.4);border-radius:50%;animation:spin 14s linear infinite;pointer-events:none}
+.orbit span{position:absolute;top:-14px;left:50%;font-size:1.7em}
+.mini{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;margin:12px 0;position:relative;overflow:hidden;border-radius:10px}
+.mini i{aspect-ratio:1;border-radius:4px;animation:pulse 2.4s ease-in-out infinite;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.scan{position:absolute;left:0;right:0;height:14px;background:linear-gradient(transparent,rgba(255,255,255,.75),transparent);animation:scan 3s linear infinite;pointer-events:none}
+.pm{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid rgba(255,255,255,.18);font-weight:700}
+.tag{display:inline-block;font-size:.72em;font-weight:800;padding:3px 10px;border-radius:99px;background:linear-gradient(135deg,#fef3c7,#fcd34d);color:#78350f;border:1px solid rgba(120,53,15,.08)}
+.tag.live{background:linear-gradient(135deg,#dcfce7,#bbf7d0);color:#14532D}
+.sec{padding:72px 6vw}.sec h2{font-size:2.2em;text-align:center;font-weight:800;letter-spacing:-.04em}.sec .sub{text-align:center;color:var(--mut);margin-bottom:30px;font-size:1.02em}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.fc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--sh);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;position:relative;overflow:hidden;--x:50%;--y:50%}
+.fc:before{content:"";position:absolute;inset:0;background:radial-gradient(220px circle at var(--x) var(--y),rgba(34,197,94,.18),transparent 58%);opacity:0;transition:.3s ease}
+.fc:hover:before{opacity:1}.fc:hover{transform:translateY(-7px) rotate(-.2deg);box-shadow:0 20px 35px rgba(22,163,74,.12);border-color:rgba(22,163,74,.2)}
+.fc .ic{font-size:2.2em;display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg, rgba(23,163,74,.10), rgba(124,58,237,.09));margin-bottom:8px}
+.arch{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:stretch}
+.arch div{flex:1 1 150px;max-width:210px;padding:17px 16px;border-radius:18px;color:#14301c;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 10px 18px rgba(20,83,45,.08);animation:glow 5s ease-in-out infinite}
+.arch small{display:block;font-weight:500;margin-top:5px;line-height:1.6}
+.foot{background:linear-gradient(135deg,#062d1c,#0d3b29 60%,#0d472f);color:#dbeee5;padding:42px 6vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;border-top:1px solid rgba(255,255,255,.12)}
+.foot b{color:#fff;font-family:var(--font-heading)}
+/* app */
+.app{display:flex;min-height:100vh}
+.side{width:236px;background:linear-gradient(180deg,#0d3a27,#123d2b 38%,#0b2d21);color:#e7f5ea;padding:14px 10px;display:flex;flex-direction:column;gap:3px;transition:width .25s;flex:none;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;border-right:1px solid rgba(255,255,255,.09)}
+.side a{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:12px;font-weight:600;white-space:nowrap;transition:all .2s ease}.side a:hover{background:rgba(255,255,255,.08);transform:translateX(2px)}.side a.on{background:linear-gradient(135deg,var(--em),#0b8d54);color:#fff;box-shadow:0 10px 22px rgba(34,197,94,.23)}
+.side .brand{padding:8px 12px 16px;font-size:1.08em;font-family:var(--font-brand)}
+.col .side{width:68px}.col .side em{display:none}
+.main{flex:1;min-width:0}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;display:flex;gap:10px;align-items:center;padding:12px 20px;background:var(--top-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.top select{width:auto;max-width:210px}
+.page{padding:20px;max-width:1300px;animation:in .35s}
+.g{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--sh);transition:transform .2s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 18px 28px rgba(16,89,61,.12)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:16px}
+.kpi b{font-size:2em;display:block;color:var(--acc);font-family:var(--font-heading)}.kpi span{color:var(--mut);font-weight:700}
+.wx{display:flex;gap:14px;flex-wrap:wrap;background:linear-gradient(120deg,#0d5b39,#1ea969);color:#fff;border-radius:22px;padding:18px 20px;margin-bottom:16px;align-items:center;box-shadow:0 18px 30px rgba(16,89,61,.18)}
+.wx div{min-width:90px}.wx b{font-size:1.45em;display:block;font-family:"Space Grotesk","Poppins",sans-serif}
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}.steps a{background:linear-gradient(135deg,var(--mint),var(--bg-2));color:var(--acc);font-weight:800;font-size:.8em;padding:6px 12px;border-radius:99px;box-shadow:0 10px 18px rgba(34,197,94,.08)}.steps a:hover{background:linear-gradient(135deg,var(--em),#0d8c57);color:#fff}
+.map{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;position:relative;overflow:hidden;border-radius:14px;padding:4px;background:rgba(16,89,61,.05)}
+.cell{aspect-ratio:1;border:2px solid transparent;border-radius:6px;transition:transform .15s ease,padding .15s ease,border-color .15s ease;padding:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.cell:hover{transform:scale(1.16);z-index:2;border-color:rgba(255,255,255,.8)}.cell.on{border-color:#111;transform:scale(1.15)}
+.leg{display:flex;gap:10px;flex-wrap:wrap;font-size:.8em;font-weight:700;margin-top:8px}.leg i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:4px}
+.chart svg{width:100%;touch-action:none}.tip{font-size:.8em;font-weight:700;color:var(--mut);min-height:1.4em}
+.xl{display:flex;justify-content:space-between;font-size:.7em;color:var(--mut)}
+.bars{display:flex;gap:7px;align-items:flex-end;height:160px;padding-top:10px}
+.bcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:.75em;font-weight:800}.bcol i{width:100%;border-radius:10px 10px 0 0;min-height:4px;transition:height .6s}.bcol:hover i{filter:brightness(1.14)}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}.row>*:first-child{flex:1}
+.pill{padding:2px 10px;border-radius:99px;font-size:.75em;font-weight:800;color:#fff;display:inline-block}
+.tabs{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}.tabs button{border:1px solid var(--line);background:var(--surface-soft);padding:8px 16px;border-radius:99px;font-weight:800;transition:all .2s ease}.tabs button:hover{border-color:rgba(34,197,94,.4);transform:translateY(-1px)}.tabs .on{background:linear-gradient(135deg,var(--btn),#0cae63);color:#fff;border-color:transparent;box-shadow:0 12px 24px rgba(15,159,95,.2)}
+table{width:100%;border-collapse:collapse;font-size:.92em}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}tr.sel{background:rgba(34,197,94,.08)}tbody tr{cursor:pointer}
+.sk{height:150px;background:linear-gradient(90deg,var(--line),var(--mint),var(--line));background-size:200% 100%;animation:sh 1.2s infinite}
+.mod{position:fixed;inset:0;background:rgba(3,18,13,.66);display:grid;place-items:center;z-index:50;padding:16px}
+.dlg{background:var(--card-strong);border:1px solid var(--line);border-radius:22px;padding:22px;max-width:480px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 30px 60px rgba(0,0,0,.26)}
+.chat{height:420px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:6px}
+.msg{max-width:85%;padding:10px 14px;border-radius:16px;white-space:pre-line;box-shadow:var(--sh)}
+.msg.u{align-self:flex-end;background:linear-gradient(135deg,#0f9f5f,#0d7c52);color:#fff}.msg.a{background:var(--mint);color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.chips button{border:1px solid var(--line);background:var(--surface-soft);border-radius:999px;padding:6px 14px;font-weight:700;transition:all .2s ease}.chips button:hover{border-color:rgba(34,197,94,.45);transform:translateY(-1px)}
+.stp{display:flex;gap:4px;margin-top:6px}.stp span{flex:1;text-align:center;font-size:.7em;font-weight:800;padding:4px;border-radius:8px;background:var(--line)}.stp .d{background:linear-gradient(135deg,var(--em),#0d8f57);color:#fff}
+.err{background:#fee2e2;color:#7f1d1d;padding:8px 12px;border-radius:10px;margin-top:8px;font-weight:700}
+.okk{background:#dcfce7;color:#14532D;padding:8px 12px;border-radius:10px;margin-top:8px;font-weight:700}
+:root[data-theme="dark"] .nav{background:rgba(0,0,0,.9)}
+:root[data-theme="dark"] .hero{background:linear-gradient(135deg,rgba(0,0,0,.88),rgba(0,0,0,.7)),url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat}
+:root[data-theme="dark"] .arch div{background:#111!important;color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 18px rgba(0,0,0,.45)}
+:root[data-theme="dark"] .foot{background:#050505}
+:root[data-theme="dark"] .side{background:#050505}
+:root[data-theme="dark"] .wx{background:linear-gradient(120deg,#090909,#171717)}
+@keyframes float{50%{transform:translate(30px,-30px)}}@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rows{to{background-position:44px 0}}@keyframes pulse{50%{opacity:.55}}@keyframes scan{from{top:-14px}to{top:100%}}@keyframes glow{50%{box-shadow:0 0 28px rgba(134,239,172,.7)}}@keyframes sh{to{background-position:-200% 0}}@keyframes in{from{opacity:0;transform:translateY(8px)}}@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(26px,-26px)}}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-bottom:140px}}
+@media (max-width:700px){.app{flex-direction:column}.side{width:auto;height:auto;flex-direction:row;overflow-x:auto;position:static}.side em,.side .brand{display:none}.col .side{width:auto}.page{padding:12px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script>
+const {useState,useEffect,useContext,createContext,Fragment} = React;
+const h = React.createElement;
+const D=(c,...k)=>{let p={className:c};if(k[0]&&typeof k[0]=='object'&&!k[0].$$typeof&&!Array.isArray(k[0]))p={...p,...k.shift()};return h('div',p,...k)};
+const Ctx=createContext();
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ===== API integration points (FastAPI). Set the base URL in Settings. Empty = demo data. ===== */
+const API={base:ls.get('av_api')||'',ep:{ndvi:'/api/ndvi',blight:'/api/blight',yield:'/api/yield',weather:'/api/weather',prices:'/api/prices',assistant:'/api/assistant'}};
+
+/* ===== demo data (kept apart from components) – ILLUSTRATIVE ONLY ===== */
+const VILLAGE='Demo Village, Demo District';
+const FIELDS0=[{id:1,name:'North Plot',crop:'Potato',ac:2.5,sow:'2026-09-15',stage:'Vegetative'},{id:2,name:'River Field',crop:'Wheat',ac:4,sow:'2026-10-05',stage:'Germination'},{id:3,name:'East Block',crop:'Rice',ac:3,sow:'2026-07-01',stage:'Grain filling'}];
+const NAV=[['overview','Overview','🏠'],['fields','My Fields','🗺️'],['ndvi','NDVI Health Monitor','🛰️'],['disease','Disease Risk','🦠'],['yield','Yield Prediction','🌾'],['water','Smart Irrigation','💧'],['market','Market Prices','📈'],['buyers','Buyer Connect','🤝'],['chat','AI Farmer Assistant','🎙️'],['settings','Settings','⚙️']];
+const DATES=['2026-09-27','2026-10-04','2026-10-11'];
+const frac=x=>x-Math.floor(x),avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
+const nd=(f,d,i)=>+Math.max(.12,Math.min(.88,.42+.4*frac(Math.sin(i*12.9898+f*78.233)*43758.5453)+d*.03-(i%11==3?.18:0))).toFixed(2);
+const grid=(f,d)=>Array.from({length:48},(_,i)=>nd(f,d,i));
+const ncol=v=>v<.3?'#dc2626':v<.45?'#f97316':v<.6?'#eab308':v<.72?'#65a30d':'#14532D';
+const trend=f=>[.41,.48,.55,.6,.64,.66,.63,.68].map(v=>+(v+(f-2)*.03).toFixed(2));
+const WK=['W1','W2','W3','W4','W5','W6','W7','W8'];
+const risks=f=>[18,24,41,63,72,55,30].map(v=>Math.min(95,v+(f%3)*4));
+const rl=v=>v<25?'Low':v<50?'Moderate':v<70?'High':'Very High',rc=v=>v<25?'#16a34a':v<50?'#ca8a04':v<70?'#ea580c':'#dc2626';
+const DAY=n=>new Date(Date.now()+n*864e5).toLocaleDateString('en-IN',{weekday:'short',day:'numeric'});
+const BASE={Potato:22,Wheat:3.4,Rice:4.1,Tomato:28},SF={Germination:.7,Vegetative:.85,Flowering:.95,'Grain filling':1,Fruiting:1};
+const ycalc=(c,ac,stage='Vegetative')=>{const e=+(BASE[c]*(SF[stage]||.9)*1.0).toFixed(1);return{e,lo:+(e*.85).toFixed(1),hi:+(e*1.12).toFixed(1),tot:+(e*ac*.4047).toFixed(1)}};
+const YIELD_SAMPLE={crop:'Wheat',acres:4,stage:'Flowering',sow:'2026-10-05'};
+const CROPS=['Potato','Wheat','Rice','Tomato'],STAGES=['Germination','Vegetative','Flowering','Fruiting','Grain filling'];
+const MKTS=[['Demo Mandi 1',12],['Demo Mandi 2',28],['Demo Mandi 3',45],['Demo Mandi 4',70]];
+const price=(c,m,i)=>Math.round((({Potato:1500,Wheat:2300,Rice:2100,Tomato:1800})[c]*(0.9+.05*i+.03*m))/10)*10;
+const BUYERS=[['Demo Buyer A','Wholesaler','Potato, Wheat'],['Demo Buyer B','Retailer','Tomato'],['Demo Buyer C','Food processor','Potato'],['Demo Buyer D','Local buyer','Rice, Wheat'],['Demo Buyer E','Wholesaler','Rice']];
+const CROP_DISEASE_SAMPLES={
+ Potato:[
+  {name:'Early blight',symptoms:'Dark, target-like spots often start on older leaves.',prevention:'Rotate crops, remove infected plant debris, and water at the soil level.'},
+  {name:'Late blight',symptoms:'Water-soaked leaf patches can spread quickly in cool, wet weather.',prevention:'Avoid overhead watering, improve airflow, and remove suspect plants promptly.'},
+  {name:'Common scab',symptoms:'Rough, corky lesions may form on potato tubers.',prevention:'Use certified seed, rotate crops, and avoid dry soil during tuber formation.'}
+ ],
+ Wheat:[
+  {name:'Wheat leaf rust',symptoms:'Small orange-brown pustules may appear on leaves.',prevention:'Grow locally recommended resistant varieties and monitor the crop regularly.'},
+  {name:'Powdery mildew',symptoms:'White, powdery patches can develop on leaves and stems.',prevention:'Avoid excessive nitrogen, maintain airflow, and use resistant varieties where available.'},
+  {name:'Septoria leaf blotch',symptoms:'Tan or brown leaf lesions may contain tiny dark spots.',prevention:'Rotate crops, manage infected residue, and use clean seed.'}
+ ],
+ Rice:[
+  {name:'Rice blast',symptoms:'Spindle-shaped lesions with pale centers may appear on leaves.',prevention:'Use resistant varieties, avoid excess nitrogen, and keep field water management steady.'},
+  {name:'Bacterial leaf blight',symptoms:'Yellowing or wilting can spread from leaf tips or edges.',prevention:'Use clean seed, avoid injuring plants, and manage crop residue and field drainage.'},
+  {name:'Sheath blight',symptoms:'Oval green-gray lesions may appear on leaf sheaths near the waterline.',prevention:'Avoid dense planting and excessive nitrogen; remove infected residue after harvest.'}
+ ],
+ Tomato:[
+  {name:'Tomato early blight',symptoms:'Brown leaf spots with concentric rings often begin on older leaves.',prevention:'Rotate crops, mulch to reduce soil splash, and water at the base of plants.'},
+  {name:'Septoria leaf spot',symptoms:'Small round spots with pale centers can spread across lower leaves.',prevention:'Remove infected leaves, avoid overhead irrigation, and rotate away from tomatoes.'},
+  {name:'Tomato powdery mildew',symptoms:'White powdery patches may develop on leaf surfaces.',prevention:'Provide good airflow, avoid overcrowding, and remove heavily affected leaves.'}
+ ]
+};
+const TIPS={Potato:['Inspect lower leaves in the early morning for spots or water-soaked patches.','Improve air flow; avoid evening irrigation when humid weather is forecast.','Before any spray, ask your local agriculture officer which product is approved for your crop and area.'],Wheat:['Walk the field and check leaves for rust-coloured or yellow patches.','Avoid waterlogging near the field edges.','Confirm any treatment with your local agriculture officer.'],Rice:['Check for leaf spots on young leaves and keep water levels steady.','Avoid excess nitrogen when humid weather is forecast.','Ask your local agriculture officer before applying any product.'],Tomato:['Check for leaf spots and wilting in the morning.','Stake plants for air flow; water at the base, not on leaves.','Ask your local agriculture officer before using any treatment.']};
+const LANGS={
+  en:{n:'English',label:'Select language',v:'en-IN',nav:{home:'Home',crop:'Crop Intelligence',disease:'Disease Detection',market:'Market Prices',support:'Farmer Support'},hero:{tag:'AI crop intelligence',title:'Grow Smarter.',subtitle:'Harvest Better.',lead:'AI-powered crop intelligence that helps you protect your fields, predict your harvest, and make smarter farming decisions.',explore:'Explore My Farm',check:'Check Crop Health'},landing:{features:'Everything your farm needs',journey:'Five connected modules, one clear journey.',platform:'How the platform is designed',platformSub:'Target architecture. This demo implements only the dashboard layer; no live data feeds or models are connected.'},overview:{welcome:'Welcome back, Farmer 👋',rain:'Rain chance',humidity:'Humidity',wind:'Wind',demo:'Demo values',veg:'Vegetation Health',risk:'Blight Risk',yield:'Estimated Yield',water:'Water Usage',fieldMap:'Field map',trend:'Vegetation health trend',risk7:'7-day disease risk',forecast:'Yield forecast (t/ha)',actions:'Recommended actions',quick:'Quick actions',upload:'Upload crop image',prices:'Check market prices',assistant:'Ask AI assistant',tap:'Tap a zone. Illustrative demo data, not satellite observations.',zone:'Zone',inspect:'please inspect',fine:'looks fine',avg:'NDVI avg',peak:'peak',illustrative:'illustrative',demoWeek:'this week, demo',general:'Demo values',alert:'Alerts'},fields:{title:'My Fields',add:'Add a field',fieldName:'Field name',crop:'Crop',acres:'Acres',sow:'Sowing date',stage:'Growth stage',help:'Select a row to make it the active field everywhere.',addBtn:'＋ Add field',error:'Please enter a name, acreage above 0, and a sowing date.'},ndvi:{title:'🛰️ NDVI Health Monitor',note:'NDVI uses near-infrared and red-light reflectance to estimate vegetation greenness and activity. The map below is illustrative demo data, not a satellite observation. Integration point: ',compare:'⇄ Compare with',earlier:'earlier',details:'Field details',attention:'Needs attention',noLow:'No low-NDVI zones on this date.',avg:'Average NDVI',history:'Historical trend',compareField:'Field-by-field comparison'},disease:{title:'🦠 Blight Risk – next 7 days',early:'Early-warning estimate, not a confirmed diagnosis. These scores are illustrative; real forecasts need a crop-specific model and validated local data (',conditions:'Conditions (sample)',summary:'Field summary',prevent:'Preventive steps for',local:'Show the photo to your local agriculture officer.'},yield:{title:'🌾 Yield Prediction',inputs:'Inputs',estimate:'Estimate',range:'Range',forecast:'Forecast range (t/ha)',factors:'Key factors (sample weights, %)',field:'Field',improve:'✨ Improve My Yield',improveTitle:'Improve My Yield',total:'Total production for',benchmark:'Regional benchmark: not available in demo.'},water:{title:'💧 Smart Irrigation',soil:'Soil moisture',sensor:'Connect a sensor',weather:'Recommendation (weather estimate)',waterSave:'Estimated water saving: ~18% (demo)',rain:'7-day rainfall (mm)',plan:'7-day irrigation plan (mm)',use:'Water use vs. last season (kL)',connectTitle:'Connect a soil sensor'},market:{title:'📈 Market Prices',search:'Search mandi…',within:'Within',noMatch:'No mandis match. Try a larger distance.',trend:'Price trend ·',source:'Demo dataset'},buyers:{title:'🤝 Buyer Connect',find:'Discover buyers',list:'List produce',enq:'Enquiries',noBuyers:'No buyers of this type.',newListing:'New listing',publish:'Publish listing',myList:'My listings',enquiry:'Enquiry to',send:'Send',message:'Message',nothing:'Nothing listed yet.',placeholder:'e.g. 10 quintals of'},chat:{title:'🎙️ Kisan AI Saathi',voice:'Voice input is not supported in this browser. Please type.',hearing:'Could not hear you. Please try again or type.',failed:'Voice input failed. Please type.',question:'Type your question…',send:'Send',placeholder:'Your crop has spots, what should I do?'},settings:{title:'Preferences',theme:'Theme',api:'Backend API base URL',save:'Save',saved:'Saved. Pages now try this server and fall back to sample data if it fails.',sources:'Data sources & integrations',notConnected:'Not connected',apiPlaceholder:'https://your-fastapi.example.com'}},
+  hi:{n:'हिन्दी',label:'भाषा चुनें',v:'hi-IN',nav:{home:'होम',crop:'फसल बुद्धिमत्ता',disease:'रोग पहचान',market:'बाजार भाव',support:'किसान सहायता'},hero:{tag:'एआई फसल बुद्धिमत्ता',title:'बेहतर',subtitle:'उपज बढ़ाएँ',lead:'एआई-आधारित फसल बुद्धिमत्ता आपकी फसलों की सुरक्षा, उपज का पूर्वानुमान और बेहतर खेती निर्णय लेने में मदद करती है।',explore:'मेरा खेत देखें',check:'फसल स्वास्थ्य देखें'},landing:{features:'आपके खेत की हर जरूरत',journey:'पांच जुड़े मॉड्यूल, एक स्पष्ट यात्रा।',platform:'प्लेटफ़ॉर्म कैसे डिजाइन है',platformSub:'यह आर्किटेक्चर लक्ष्य है। यह डेमो केवल डैशबोर्ड लेयर का उपयोग करता है; वास्तविक डेटा फीड या मॉडल जुड़े नहीं हैं।'},overview:{welcome:'आपका स्वागत है, किसान 👋',rain:'बारिश की संभावना',humidity:'नमी',wind:'हवा',demo:'डेमो मान',veg:'वनस्पति स्वास्थ्य',risk:'ब्लाइट जोखिम',yield:'अनुमानित उपज',water:'पानी उपयोग',fieldMap:'खेत नक्शा',trend:'वनस्पति स्वास्थ्य ट्रेंड',risk7:'7-दिन का रोग जोखिम',forecast:'उपज पूर्वानुमान (टन/हेक्टेयर)',actions:'सुझाव',quick:'त्वरित क्रियाएँ',upload:'फसल फोटो अपलोड करें',prices:'बाजार भाव देखें',assistant:'एआई सहायक से पूछें',tap:'जोन चुनें. यह नमूना डेटा है, सैटेलाइट अवलोकन नहीं.',zone:'जोन',inspect:'जाँच करें',fine:'ठीक दिख रहा है',avg:'NDVI औसत',peak:'उच्चतम',illustrative:'उदाहरण',demoWeek:'इस सप्ताह, नमूना',general:'नमूना मान',alert:'अलर्ट'},fields:{title:'मेरे खेत',add:'खेत जोड़ें',fieldName:'खेत का नाम',crop:'फसल',acres:'एकड़',sow:'बुवाई तिथि',stage:'विकास चरण',help:'सक्रिय खेत बनाने के लिए पंक्ति चुनें।',addBtn:'＋ खेत जोड़ें',error:'कृपया नाम, 0 से अधिक एकड़ और बुवाई तिथि दर्ज करें।'},ndvi:{title:'🛰️ NDVI स्वास्थ्य मॉनिटर',note:'NDVI नज़दीकी इनफ्रारेड और लाल प्रकाश का उपयोग करके हरियाली और गतिविधि का आकलन करता है। नीचे का नक्शा नमूना डेटा है, सैटेलाइट अवलोकन नहीं। इंटीग्रेशन बिंदु: ',compare:'⇄ तुलना करें',earlier:'पहले',details:'खेत विवरण',attention:'ध्यान देने योग्य',noLow:'इस तिथि पर कम NDVI वाला कोई क्षेत्र नहीं है।',avg:'औसत NDVI',history:'ऐतिहासिक ट्रेंड',compareField:'खेत-दर-खेत तुलना'},disease:{title:'🦠 ब्लाइट जोखिम – अगले 7 दिन',early:'प्रारंभिक चेतावनी, पुष्टि नहीं. ये अंक नमूने हैं; वास्तविक पूर्वानुमान के लिए फसल-विशिष्ट मॉडल और सत्यापित स्थानीय डेटा की आवश्यकता है (',conditions:'स्थितियाँ (नमूना)',summary:'खेत सारांश',prevent:'के लिए निवारक कदम',local:'फोटो अपने कृषि अधिकारी को दिखाएँ।'},yield:{title:'🌾 उपज अनुमान',inputs:'इनपुट',estimate:'अनुमान',range:'रेंज',forecast:'उपज रेंज (टन/हेक्टेयर)',factors:'मुख्य घटक (नमूना भार, %)',field:'खेत',improve:'✨ मेरी उपज सुधारें',improveTitle:'मेरी उपज सुधारें',total:'कुल उत्पादन',benchmark:'क्षेत्रीय मानदंड: डेमो में उपलब्ध नहीं है।'},water:{title:'💧 स्मार्ट सिंचाई',soil:'मिट्टी की नमी',sensor:'सेंसर जोड़ें',weather:'अनुशंसा (मौसम अनुमान)',waterSave:'अनुमानित जल बचत: ~18% (नमूना)',rain:'7-दिवसीय वर्षा (मिमी)',plan:'7-दिवसीय सिंचाई योजना (मिमी)',use:'पिछली सीज़न की तुलना में जल उपयोग',connectTitle:'मिट्टी सेंसर जोड़ें'},market:{title:'📈 बाजार भाव',search:'मंडी खोजें…',within:'के भीतर',noMatch:'कोई मंडी मेल नहीं खाती। अधिक दूरी चुनें।',trend:'भाव ट्रेंड ·',source:'नमूना डेटा'},buyers:{title:'🤝 खरीदार जुड़ाव',find:'खरीदार खोजें',list:'उपज सूचीबद्ध करें',enq:'अनुरोध',noBuyers:'इस प्रकार का कोई खरीदार नहीं है।',newListing:'नई सूची',publish:'प्रकाशित करें',myList:'मेरी सूची',enquiry:'को अनुरोध',send:'भेजें',message:'संदेश',nothing:'अभी कुछ सूचीबद्ध नहीं है।',placeholder:'जैसे 10 क्विंटल'},chat:{title:'🎙️ किसान एआई साथी',voice:'यह ब्राउज़र वॉइस इनपुट का समर्थन नहीं करता। कृपया टाइप करें।',hearing:'मैंने कुछ नहीं सुना। कृपया फिर से कोशिश करें या टाइप करें।',failed:'वॉइस इनपुट विफल रहा। कृपया टाइप करें।',question:'अपना सवाल लिखें…',send:'भेजें',placeholder:'मेरे फसल में दाग लग रहा है, क्या करूं?'},settings:{title:'प्राथमिकताएँ',theme:'थीम',api:'बैकएंड API आधार URL',save:'सेव करें',saved:'सहेज लिया गया। पेज अब इस सर्वर का प्रयास करते हैं और विफल होने पर नमूना डेटा का उपयोग करते हैं।',sources:'डेटा स्रोत और एकीकरण',notConnected:'जुड़ा नहीं',apiPlaceholder:'https://your-fastapi.example.com'}},
+  mr:{n:'मराठी',label:'भाषा निवडा',v:'mr-IN',nav:{home:'मुख्यपृष्ठ',crop:'पिकविषयक बुद्धिमत्ता',disease:'रोग शोध',market:'बाजार दर',support:'शेती सहाय्य'},hero:{tag:'एआय पिकेची बुद्धिमत्ता',title:'चांगले',subtitle:'पीक वाढवा',lead:'एआय-आधारित पिकविषयक बुद्धिमत्ता तुमच्या शेताची सुरक्षा, उत्पन्नाचा अंदाज आणि स्मार्ट शेती निर्णय घेण्यास मदत करते.',explore:'माझे शेत पाहा',check:'पिकेचे आरोग्य तपासा'},landing:{features:'तुमच्या शेतासाठी सर्व गरज',journey:'पाच जोडलेले मॉड्यूल, एक स्पष्ट प्रवास.',platform:'प्लॅटफॉर्म कसे डिझाइन केले आहे',platformSub:'हे उद्दिष्ट आर्किटेक्चर आहे. हा डेमो फक्त डॅशबोर्ड लेयर दाखवतो; वास्तविक डेटा फीड किंवा मॉडेल जोडलेले नाहीत.'},overview:{welcome:'परत स्वागत आहे, शेतकरी 👋',rain:'पावसाची शक्यता',humidity:'आर्द्रता',wind:'वा',demo:'डेमो मूल्ये',veg:'वनस्पति आरोग्य',risk:'ब्लाइट धोका',yield:'अंदाजे उत्पादन',water:'पाणी वापर',fieldMap:'शेत नकाशा',trend:'वनस्पति आरोग्य ट्रेंड',risk7:'7-दिवसीय रोग धोका',forecast:'उत्पादन अंदाज (t/ha)',actions:'शिफारसी',quick:'त्वरित कृती',upload:'पिकाची प्रतिमा अपलोड करा',prices:'बाजार दर तपासा',assistant:'एआय सहाय्यकाला विचारा',tap:'झोन निवडा. हे नमुना डेटा आहे, सॅटेलाइट निरीक्षण नाही.',zone:'झोन',inspect:'तपासणी करा',fine:'सोडणी चांगली आहे',avg:'NDVI सरासरी',peak:'उच्चतम',illustrative:'उदाहरणीय',demoWeek:'या आठवड्यात, डेमो',general:'डेमो मूल्ये',alert:'अलर्ट'},fields:{title:'माझे शेत',add:'शेत जोडणे',fieldName:'शेत नाव',crop:'पिक',acres:'एकर',sow:'पेरणी तारीख',stage:'विकास अवस्था',help:'सक्रिय शेत निवडण्यासाठी ओळ निवडा.',addBtn:'＋ शेत जोडा',error:'कृपया नाव, 0 पेक्षा जास्त क्षेत्रफळ आणि पेरणी तारीख भरा.'},ndvi:{title:'🛰️ NDVI आरोग्य निरीक्षक',note:'NDVI जवळचे इन्फ्रारेड आणि लाल प्रकाश वापरते आणि वनस्पतीची हिरवीपणा व कार्यक्षमता मोजते. खालील नकाशा नमुना डेटा आहे, सॅटेलाइट निरीक्षण नाही. इंटीग्रेशन पॉइंट: ',compare:'⇄ तुलना करा',earlier:'मागील',details:'शेत तपशील',attention:'लक्ष देण्यासारखे',noLow:'या तारखेला कमी NDVI झोन नाही.',avg:'सरासरी NDVI',history:'ऐतिहासिक ट्रेंड',compareField:'शेत-दर-शेत तुलना'},disease:{title:'🦠 ब्लाइट धोका – पुढील 7 दिवस',early:'प्रारंभिक चेतावणी, निश्चित निदान नाही. हे आकडे नमुना आहेत; वास्तविक अंदाजासाठी पीक-विशिष्ट मॉडेल आणि पडताळलेल्या स्थानिक डेटा आवश्यक आहे (',conditions:'अट (नमुना)',summary:'शेत सारांश',prevent:'साठी प्रतिबंधक पावले',local:'तुमची फोटो तुमच्या स्थानिक कृषी अधिकाऱ्यासोबत दाखवा.'},yield:{title:'🌾 उत्पादन अंदाज',inputs:'इनपुट',estimate:'अंदाज',range:'परिसर',forecast:'उत्पादन अंदाज (t/ha)',factors:'मुख्य घटक (नमुना वजन, %)',field:'शेत',improve:'✨ माझे उत्पादन सुधारित करा',improveTitle:'माझे उत्पादन सुधारित करा',total:'एकूण उत्पादन',benchmark:'प्रादेशिक मानक: डेमोमध्ये उपलब्ध नाही.'},water:{title:'💧 स्मार्ट सिंचन',soil:'मातीची ओल',sensor:'सेंसर जोडा',weather:'शिफारस (हवामान अंदाज)',waterSave:'अंदाजित पाणी बचत: ~18% (डेमो)',rain:'7-दिवसांची पाऊस (मिमी)',plan:'7-दिवसाची सिंचन योजना (मिमी)',use:'मागील हंगामाच्या तुलनेत पाणी वापर',connectTitle:'मातीचा सेंसर जोडा'},market:{title:'📈 बाजार दर',search:'मंडी शोधा…',within:'आत',noMatch:'कोणतीही मंडी जुळली नाही. अधिक अंतर निवडा.',trend:'भाव ट्रेंड ·',source:'नमूना डेटा'},buyers:{title:'🤝 खरेदीदार जोडणी',find:'खरेदीदार शोधा',list:'उत्पादन सूचीबद्ध करा',enq:'मागण्या',noBuyers:'अशा प्रकारचे खरेदीदार नाहीत.',newListing:'नवीन सूची',publish:'प्रकाशित करा',myList:'माझ्या यादी',enquiry:'कडे विनंती',send:'पाठवा',message:'संदेश',nothing:'अद्याप काही सूचीबद्ध नाही.',placeholder:'उदा. 10 क्विंटल'},chat:{title:'🎙️ किसान एआय सहयोगी',voice:'हा ब्राउझर व्हॉइस इनपुटसाठी सपोर्ट करत नाही. कृपया टाइप करा.',hearing:'मी काहीही ऐकले नाही. कृपया पुन्हा प्रयत्न करा किंवा टाइप करा.',failed:'व्हॉइस इनपुट अयशस्वी. कृपया टाइप करा.',question:'तुमचा प्रश्न टाइप करा…',send:'पाठवा',placeholder:'माझ्या फसलमध्ये दाग आले आहेत, मी काय करू?'},settings:{title:'प्राधान्ये',theme:'थीम',api:'बॅकएंड API आधार URL',save:'सेव्ह करा',saved:'सेव्ह झाले. पेज आता हा सर्व्हर वापरतील आणि अयशस्वी झाल्यास नमुना डेटा वापरतील.',sources:'डेटा स्रोत आणि एकत्रीकरण',notConnected:'जोडलेले नाही',apiPlaceholder:'https://your-fastapi.example.com'}},
+  gu:{n:'ગુજરાતી',label:'ભાષા પસંદ કરો',v:'gu-IN',nav:{home:'હોમ',crop:'પાક જ્ઞાન',disease:'રોગ શોધ',market:'બજાર કિંમત',support:'ખેડૂત સહાય'},hero:{tag:'આઈ plantation જ્ઞાન',title:'સુધારેલ',subtitle:'ફળદાયી ઉપજ',lead:'આઈ-આધારિત પાક જ્ઞાન તમારી ફસલોને સુરક્ષિત કરવા, ઉપજનો અંદાજ અને વધુ સમજદાર ખેતી निर्णયો માટે મદદ કરે છે.',explore:'મારો ખેતર જુઓ',check:'ફસલોનું સ્વાસ્થ્ય જુઓ'},landing:{features:'તમારા ખેતર માટેની દરેક જરૂરિયાત',journey:'પાંચ જોડાયેલા મોડ્યુલ, એક સ્પષ્ટ યાત્રા.',platform:'પ્લેટફોર્મ કેવી રીતે બનાવેલ છે',platformSub:'આ હેતુસરનું આર્કિટેક્ચર છે. આ ડેમો ફક્ત ડેશબોર્ડ સ્તરનો ભાગ છે; કોઈ રીઅલ ડેટા ફીડ અથવા મોડેલ જોડાયેલ નથી.'},overview:{welcome:'પાછા સ્વાગત છો, ખેડૂતે 👋',rain:'વર્ષાની શક્યતા',humidity:'આર્દ્રતા',wind:'હવા',demo:'ડેમો મૂલ્યો',veg:'વનસ્પતિ આરોગ્ય',risk:'બ્લાઈટ જોખમ',yield:'અંદાજિત ઉપજ',water:'પાણી ઉપયોગ',fieldMap:'ખેતર નકશો',trend:'વનસ્પતિ આરોગ્યનો روند',risk7:'7-દિવસનો રોગ જોખમ',forecast:'ઉપજ અંદાજ (ટન/હેક્ટર)',actions:'સુચનાઓ',quick:'ઝડપી ક્રિયાઓ',upload:'પાકની છબી અપલોડ કરો',prices:'બજાર કિંમતો જુઓ',assistant:'એઆઈ સહાયકથી પૂછો',tap:'ઝોન પસંદ કરો. આ નમૂના ડેટા છે, સેટેલાઇટ અવલોકન નથી.',zone:'ઝોન',inspect:'પરિક્ષા કરો',fine:'સારું દેખાય છે',avg:'NDVI સરેરાશ',peak:'સૌથી વધુ',illustrative:'ઉદાહરણ',demoWeek:'આ અઠવાડિયે, ડેમો',general:'ડેમો મૂલ્યો',alert:'અલર્ટ'},fields:{title:'મારા ખેતર',add:'ખેતર ઉમેરો',fieldName:'ખેતરનું નામ',crop:'પાક',acres:'એકર',sow:'બિયારાની તારીખ',stage:'વિકાસ અવસ્થા',help:'સક્રિય ખેતર પસંદ કરવા માટે પંક્તિ પસંદ કરો.',addBtn:'＋ ખેતર ઉમેરો',error:'કૃપા કરીને નામ, 0 કરતા વધુ એકર અને બિયારાની તારીખ દાખલ કરો.'},ndvi:{title:'🛰️ NDVI આરોગ્ય મોનિટર',note:'NDVI નજીકનો ઇન્ફ્રારેડ અને લાલ પ્રકાશનો ઉપયોગ કરીને છોડની હરિયાળી અને પ્રવૃત્તિનું મૂલ્યાંકન કરે છે. નીચેનો નકશો નમૂના ડેટા છે, સેટેલાઇટ અવલોકન નથી. ઇન્ટિગ્રેશન પોઈન્ટ: ',compare:'⇄ સરખામણી કરો',earlier:'પહેલાનું',details:'ખેતર વિગતો',attention:'ધ્યાન આપવું',noLow:'આ તારીખેخفض NDVI વાળા કોઈ ઝોન નથી.',avg:'સરેરાશ NDVI',history:'ঐતિહાસિક ટ્રેન્ડ',compareField:'ખેતર-દર-ખેતર સરખામણી'},disease:{title:'🦠 બ્લાઈટ જોખમ – આગામી 7 દિવસ',early:'પ્રારંભિક ચેતવણી, નક્કી નિદાન નથી. આ ગુણ નમૂનાનો છે; વાસ્તવિક અંદાજ માટે પાક-વિશિષ્ટ મોડેલ અને ચકાસાયેલ સ્થાનિક ડેટાની જરૂર છે (',conditions:'પરિસ્થિતિઓ (નમૂના)',summary:'ખેતર સારાંશ',prevent:'માટે નિવારક પગલાં',local:'તમે તમારી ફોટો તમારા સ્થાનિક કૃષિ અધિકારીને બતાવો.'},yield:{title:'🌾 ઉપજ અંદાજ',inputs:'ઈનપુટ',estimate:'અંદાજ',range:'રેંજ',forecast:'ઉપજ રેંજ (ટન/હેક્ટર)',factors:'મુખ્ય પરિબળો (નમૂના વજન, %)',field:'ખેતર',improve:'✨ મારી ઉપજ સુધારો',improveTitle:'મારી ઉપજ સુધારો',total:'કુલ ઉત્પાદન',benchmark:'પ્રાદેશિક માનક: ડેમોમાં ઉપલબ્ધ નથી.'},water:{title:'💧 સ્માર્ટ સિંચાઇ',soil:'મળની ભેજ',sensor:'સેન્સર ઉમેરો',weather:'સુચના (હવામાન અંદાજ)',waterSave:'અંદાજિત પાણી બચત: ~18% (ડેમો)',rain:'7-દિવસનો વરસાદ (મિમી)',plan:'7-દિવસની સિંચાઇ યોજના (મિમી)',use:'પાછલા સીઝન સરખામણીમાં પાણીનો ઉપયોગ',connectTitle:'મળનો સેન્સર જોડો'},market:{title:'📈 બજાર કિંમત',search:'મંડી શોધો…',within:'આ અંદર',noMatch:'કોઈ પણ मंडી બંધબેસતી નથી. વધુ અંતર પસંદ કરો.',trend:'કિંમત ટ્રેન્ડ ·',source:'નમૂના ડેટા'},buyers:{title:'🤝 ખરીદદાર જોડાવ',find:'ખરીદદારો શોધો',list:'ઉપજ સૂચિ બનાવો',enq:'પૂછપરછ',noBuyers:'આ પ્રકારના ખરીદદારો નથી.',newListing:'નવી સૂચિ',publish:'પ્રકાશિત કરો',myList:'મારી સૂચિ',enquiry:'નો પ્રશ્ન',send:'મોકલો',message:'સંદેશ',nothing:'હજી કોઈ સૂચિ નથી.',placeholder:'ઉદાહરણ 10 ક્વિન્ટલ'},chat:{title:'🎙️ ખેડૂત AI સહાયક',voice:'આ બ્રાઉઝર વોઇસ ઇનપુટને સપોર્ટ નથી કરે. કૃપા કરીને ટેક્સ્ટ નાખો.',hearing:'હું કંઈ સાંભળ્યો નથી. कृપા કરીને ફરી પ્રયાસ કરો અથવા ટેક્સ્ટ દાખલ કરો.',failed:'વોઇસ ઇનપુટ નિષ્ફળ. કૃપા કરીને ટેક્સ્ટ દાખલ કરો.',question:'તમારો પ્રશ્ન લખો…',send:'મોકલો',placeholder:'મારી ફસલમાં દાગો દેખાય છે, શું કરવું?'},settings:{title:'પસંદગીઓ',theme:'થીમ',api:'બેકએન્ડ API બેઝ URL',save:'સેવ કરો',saved:'સેવ થયું. પેજ હવે આ સર્વરનું પ્રયાસ કરશે અને નિષ્ફળ થયેલ હોય તો નમૂના ડેટાનો ઉપયોગ કરશે.',sources:'ડેટા સ્ત્રોતો અને એકીકરણ',notConnected:'જોડાયેલ નથી',apiPlaceholder:'https://your-fastapi.example.com'}}
+};
+
+/* ===== reusable UI ===== */
+const Badge=({live})=>h('span',{className:'tag'+(live?' live':'')},live?'LIVE DATA':'SAMPLE DATA · not live');
+function ThemeIcon({theme}){
+  if(theme === 'dark'){
+    return h('svg',{viewBox:'0 0 24 24','aria-hidden':'true'},
+      h('circle',{cx:'12',cy:'12',r:'4.5',className:'sun-fill'}),
+      h('g',null,
+        h('line',{x1:'12',y1:'1.5',x2:'12',y2:'4.5'}),
+        h('line',{x1:'12',y1:'19.5',x2:'12',y2:'22.5'}),
+        h('line',{x1:'1.5',y1:'12',x2:'4.5',y2:'12'}),
+        h('line',{x1:'19.5',y1:'12',x2:'22.5',y2:'12'}),
+        h('line',{x1:'4.2',y1:'4.2',x2:'6.1',y2:'6.1'}),
+        h('line',{x1:'17.9',y1:'17.9',x2:'19.8',y2:'19.8'}),
+        h('line',{x1:'4.2',y1:'19.8',x2:'6.1',y2:'17.9'}),
+        h('line',{x1:'17.9',y1:'6.1',x2:'19.8',y2:'4.2'})
+      )
+    );
+  }
+  return h('svg',{viewBox:'0 0 24 24','aria-hidden':'true'},
+    h('path',{d:'M20 15.5A7.5 7.5 0 0 1 8.5 4a7.5 7.5 0 1 0 11.5 11.5Z'}),
+    h('path',{d:'M12 2.5v2.2M12 19.3v2.2M4.7 4.7l1.6 1.6M17.7 17.7l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.7 19.3l1.6-1.6M17.7 6.3l1.6-1.6'})
+  );
+}
+function Count({to,dec=0,suf=''}){const[v,setV]=useState(0);useEffect(()=>{let r,t0;const f=t=>{t0=t0||t;const p=Math.min(1,(t-t0)/900);setV(to*p);if(p<1)r=requestAnimationFrame(f)};r=requestAnimationFrame(f);return()=>cancelAnimationFrame(r)},[to]);return v.toFixed(dec)+suf}
+function Load({k,fb,children}){const[s,set]=useState(null),key=JSON.stringify(fb);
+ useEffect(()=>{let off=false;set(null);const done=(d,live)=>!off&&set({d,live});
+  if(API.base)fetch(API.base+API.ep[k]).then(r=>r.ok?r.json():Promise.reject()).then(d=>done(d,true)).catch(()=>done(fb,false));
+  else setTimeout(()=>done(fb,false),300);return()=>{off=true}},[k,key]);
+ return s?h(Fragment,null,h(Badge,{live:s.live}),children(s.d)):D('card sk');}
+function Modal({t,x,children}){useEffect(()=>{const f=e=>e.key=='Escape'&&x();addEventListener('keydown',f);return()=>removeEventListener('keydown',f)},[]);
+ return h('div',{className:'mod',onClick:x},h('div',{className:'dlg',role:'dialog','aria-modal':true,'aria-label':t,onClick:e=>e.stopPropagation()},h('h3',null,t),children,h('p',null,h('button',{className:'bt ghost',onClick:x},'Close'))));}
+function Line({series,labels,unit='',H=130}){const[i,setI]=useState(null),W=320,p=18,n=labels.length,all=series.flatMap(s=>s.d),mn=Math.min(...all),mx=Math.max(...all);
+ const X=j=>p+j*(W-2*p)/(n-1),Y=v=>H-p-(v-mn)/((mx-mn)||1)*(H-2*p);
+ return D('chart',h('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':series.map(s=>(s.n||'')+': '+s.d.join(', ')).join('; '),onPointerMove:e=>{const r=e.currentTarget.getBoundingClientRect();setI(Math.max(0,Math.min(n-1,Math.round(((e.clientX-r.left)/r.width*W-p)/((W-2*p)/(n-1))))))},onPointerLeave:()=>setI(null)},
+  series.map((s,k)=>h('path',{key:k,d:s.d.map((v,j)=>(j?'L':'M')+X(j)+' '+Y(v)).join(''),fill:'none',stroke:s.c,strokeWidth:3,strokeLinejoin:'round',strokeDasharray:s.dash})),
+  i!=null&&h('line',{x1:X(i),x2:X(i),y1:8,y2:H-p,stroke:'#888',strokeDasharray:'3'}),
+  i!=null&&series.map((s,k)=>h('circle',{key:k,cx:X(i),cy:Y(s.d[i]),r:5,fill:s.c}))),
+  D('tip',i==null?'Hover or touch the chart':labels[i]+' · '+series.map(s=>(s.n?s.n+' ':'')+s.d[i]+unit).join(' · ')),
+  D('xl',labels.map(l=>h('span',{key:l},l))));}
+function Bars({v,labels,colors,max=100,unit=''}){return D('bars',v.map((x,i)=>h('div',{key:i,className:'bcol',title:labels[i]+': '+x+unit},h('span',null,x+unit),h('i',{style:{height:(x/max*100)+'%',background:colors[i]||'#16a34a'}}),h('small',null,labels[i]))));}
+function FieldMap({g,sel,setSel}){return h('div',{className:'map',role:'group','aria-label':'Field zones coloured by NDVI'},g.map((v,i)=>h('button',{key:i,className:'cell'+(sel===i?' on':''),style:{background:ncol(v)},'aria-label':'Zone '+(i+1)+' NDVI '+v,title:'Zone '+(i+1)+' · NDVI '+v,onClick:()=>setSel&&setSel(i)})),h('div',{className:'scan'}));}
+const Legend=()=>D('leg',[['#dc2626','<0.30 stressed'],['#f97316','0.30–0.45 low'],['#eab308','0.45–0.60 moderate'],['#65a30d','0.60–0.72 good'],['#14532D','>0.72 dense']].map(x=>h('span',{key:x[0]},h('i',{style:{background:x[0]}}),x[1])));
+const Note=({children})=>h('p',{style:{color:'var(--mut)',fontSize:'.85em'}},children);
+
+/* ===== landing ===== */
+function Landing(){
+ const S=useContext(Ctx),lang=S&&S.lang?S.lang:'en';
+ const[t,setT]=useState({x:0,y:0}),cells=Array.from({length:32},(_,i)=>nd(1,2,i));
+ const l=LANGS[lang]||LANGS.en;
+ const F=[['🛰️','NDVI Monitoring','Zone-by-zone vegetation health from satellite bands (Sentinel-2 integration-ready).'],['🦠','Disease Forecasting','5–7 day blight early-warning from weather, NDVI trend and crop stage.'],['🌾','Yield Prediction','Harvest range with contributing factors, ready for a trained model.'],['💧','Smart Irrigation','Weather-aware watering schedule with sensor support.'],['🤝','Market & Buyers','Compare prices, list produce, send enquiries.']];
+ const A=[['1 Data','Sentinel-2 · IMD · INSAT-3D · Bhuvan · Open-Meteo · Farmer input','#bfdbfe'],['2 Ingestion','Cloud masking, resampling, features','#fde68a'],['3 Intelligence','NDVI · Blight · Yield · NLP','#bbf7d0'],['4 Backend','FastAPI · Celery · File storage','#ddd6fe'],['5 Delivery','Telegram bot · Web dashboard','#fecaca']];
+ const currentTheme = S && S.theme === 'dark' ? 'dark' : 'light';
+ return h(Fragment,null,
+  h('nav',{className:'nav'},h('b',null,'🌱 AgroVision AI'),h('div',{className:'lang-picker'},h('span',null,l.label),h('select',{className:'lang-switch',value:lang,onChange:e=>S.setLang(e.target.value),'aria-label':l.label},Object.keys(LANGS).map(k=>h('option',{key:k,value:k},LANGS[k].n))),h('button',{className:'bt ghost sm theme-btn',title:currentTheme=='dark'?'Switch to light mode':'Switch to dark mode',onClick:()=>S.setTheme(currentTheme === 'dark' ? 'light' : 'dark')},h(ThemeIcon,{theme:currentTheme}))),[[l.nav.home,'#/'],[l.nav.crop,'#/app/ndvi'],[l.nav.disease,'#/app/disease'],[l.nav.market,'#/app/market'],[l.nav.support,'#/app/chat']].map(item=>h('a',{key:item[0],href:item[1]},item[0]))),
+  h('header',{className:'hero'},
+   h('div',{className:'blob',style:{width:380,height:380,background:'#16A34A',top:-80,left:-80}}),h('div',{className:'blob',style:{width:300,height:300,background:'#facc15',top:'30%',right:'20%',animationDelay:'-4s'}}),h('div',{className:'farm'},h('i')),
+   h('div',{style:{position:'relative',zIndex:2}},h('span',{className:'tag live'},'🛰️ '+l.hero.tag),h('h1',null,l.hero.title,' ',h('br'),h('span',null,l.hero.subtitle)),
+    h('p',{className:'lead'},l.hero.lead),
+    D('cta',h('a',{href:'#/app/overview',className:'bt'},l.hero.explore+' →'),h('a',{href:'#/app/ndvi',className:'bt ghost'},l.hero.check))),
+   h('div',{style:{position:'relative',zIndex:2},onMouseMove:e=>{const r=e.currentTarget.getBoundingClientRect();setT({x:(e.clientX-r.left)/r.width-.5,y:(e.clientY-r.top)/r.height-.5})},onMouseLeave:()=>setT({x:0,y:0})},
+    D('orbit',h('span',null,'🛰️')),
+    h('div',{className:'prev',style:{transform:'rotateY('+t.x*14+'deg) rotateX('+-t.y*14+'deg)'}},h('b',null,'Live preview '),h(Badge,{live:false}),
+     D('mini',cells.map((v,i)=>h('i',{key:i,style:{background:ncol(v),animationDelay:(i%8)*.2+'s'}})),D('scan')),
+     D('pm',h('span',null,'🌿 Vegetation Health'),h('span',null,h(Count,{to:.68,dec:2}))),D('pm',h('span',null,'🦠 Blight Risk'),h('span',null,'High (day 5)')),D('pm',h('span',null,'🌾 Predicted Yield'),h('span',null,h(Count,{to:18.7,dec:1}),' t/ha'))))),
+  h('section',{className:'sec'},h('h2',null,l.landing.features),D('sub',l.landing.journey),
+   D('feat',F.map(f=>h('div',{key:f[1],className:'fc',onMouseMove:e=>{const r=e.currentTarget.getBoundingClientRect();e.currentTarget.style.setProperty('--x',e.clientX-r.left+'px');e.currentTarget.style.setProperty('--y',e.clientY-r.top+'px')}},D('ic',f[0]),h('h3',null,f[1]),h('p',null,f[2]))))),
+  h('section',{className:'sec',style:{background:'var(--card)'}},h('h2',null,l.landing.platform),D('sub',l.landing.platformSub),
+   D('arch',A.map(a=>h('div',{key:a[0],style:{background:a[2],animationDelay:a[0][0]*.6+'s'}},a[0],h('small',null,a[1]))))),
+  h('footer',{className:'foot'},D('',h('b',null,'AgroVision AI'),h('p',null,'Sample-data demo of a smart farming platform.')),D('',h('b',null,'Support'),h('p',null,h('a',{href:'#/app/chat'},'Ask Kisan AI Saathi'))),D('',h('b',null,'Contact'),h('p',null,'support@your-domain.example (placeholder)')),D('',h('b',null,'Platform'),h('p',null,'All figures are illustrative until real feeds are connected.'))));
+}
+
+/* ===== dashboard pages ===== */
+function Overview(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,f=S.field,g=grid(f.id,2),[sel,setSel]=useState(null),[m,setM]=useState(null),[img,setImg]=useState(null),rk=risks(f.id),y=ycalc(f.crop,f.ac,f.stage),mx=Math.max(...rk),T=L.overview||{welcome:'Welcome back, Farmer 👋',rain:'Rain chance',humidity:'Humidity',wind:'Wind',demo:'Demo values',veg:'Vegetation Health',risk:'Blight Risk',yield:'Estimated Yield',water:'Water Usage',fieldMap:'Field map',trend:'Vegetation health trend',risk7:'7-day disease risk',forecast:'Yield forecast (t/ha)',actions:'Recommended actions',quick:'Quick actions',upload:'Upload crop image',prices:'Check market prices',assistant:'Ask AI assistant',tap:'Tap a zone. Illustrative demo data, not satellite observations.',zone:'Zone',inspect:'please inspect',fine:'looks fine',avg:'NDVI avg',peak:'peak',illustrative:'illustrative',demoWeek:'this week, demo'};
+ return h(Fragment,null,
+  D('',h('h2',null,T.welcome),h('p',null,f.name+' · '+VILLAGE+' '),h(Badge,{live:false})),
+  D('steps',['overview','ndvi','disease','yield','water','market','buyers'].map((p,i)=>h('a',{key:p,href:'#/app/'+p},(i+1)+'. '+NAV.find(n=>n[0]==p)[1]))),
+  D('wx',D('','☀️ ',h('b',null,'27°C')),D('',h('span',null,'Rain chance'),h('b',null,'60%')),D('',h('span',null,'Humidity'),h('b',null,'78%')),D('',h('span',null,'Wind'),h('b',null,'12 km/h')),h('span',{className:'tag'},'Demo values')),
+  D('kpis',[['🌿','Vegetation Health',h(Count,{to:avg(g),dec:2}),'NDVI avg'],['🦠','Blight Risk',rl(mx),'peak '+mx+'/100'],['🌾','Estimated Yield',h(Fragment,null,h(Count,{to:y.e,dec:1}),' t/ha'),'illustrative'],['💧','Water Usage',h(Fragment,null,h(Count,{to:42,suf:' kL'})),'this week, demo']].map(k=>D('card kpi',h('span',null,k[0]+' '+k[1]),h('b',null,k[2]),h('small',null,k[3])))),
+  D('g',
+   D('card',h('h3',null,'Field map'),h(FieldMap,{g,sel,setSel}),Legend(),h(Note,null,sel!=null?'Zone '+(sel+1)+': NDVI '+g[sel]+(g[sel]<.45?' – please inspect':' – looks fine'):'Tap a zone. Illustrative demo data, not satellite observations.')),
+   D('card',h('h3',null,'Vegetation health trend'),h(Load,{k:'ndvi',fb:trend(f.id)},d=>h(Line,{series:[{d,c:'#16a34a'}],labels:WK}))),
+   D('card',h('h3',null,'7-day disease risk'),h(Load,{k:'blight',fb:rk},d=>h(Bars,{v:d,labels:d.map((_,i)=>DAY(i)),colors:d.map(rc)}))),
+   D('card',h('h3',null,'Yield forecast (t/ha)'),h(Load,{k:'yield',fb:y},d=>h(Line,{series:[{d:[d.lo*.9,d.lo,d.lo*1.05,d.lo*1.1],c:'#ea580c',dash:'4',n:'Low'},{d:[d.e*.9,d.e,d.e*1.03,d.e*1.06].map(v=>+v.toFixed(1)),c:'#16a34a',n:'Expected'},{d:[d.hi*.9,d.hi,d.hi*1.03,d.hi*1.05],c:'#2563eb',dash:'4',n:'High'}].map(s=>({...s,d:s.d.map(v=>+(+v).toFixed(1))})),labels:['Now','+2w','+4w','Harvest']})))),
+  D('g',
+   D('card',h('h3',null,'Recommended actions'),[['High','Inspect zones with NDVI below 0.45 this week.','#dc2626'],['High','Check '+f.crop+' leaves on '+DAY(3)+' – humid spell forecast.','#ea580c'],['Medium','Skip irrigation on rain days; re-check soil first.','#ca8a04'],['Low','Compare mandi prices before listing produce.','#16a34a']].map((a,i)=>D('row',{key:i},h('span',{key:1,className:'pill',style:{background:a[2]}},a[0]),h('span',{key:2},a[1])))),
+   D('card',h('h3',null,'Quick actions'),D('chips',h('button',{onClick:()=>setM('up')},'📷 Upload crop image'),h('button',{onClick:()=>location.hash='#/app/market'},'📈 Check market prices'),h('button',{onClick:()=>location.hash='#/app/chat'},'🎙️ Ask AI assistant')))),
+  m=='up'&&h(Modal,{t:'Upload crop image',x:()=>setM(null)},h('input',{type:'file',accept:'image/*','aria-label':'Crop image',onChange:e=>e.target.files[0]&&setImg(URL.createObjectURL(e.target.files[0]))}),img&&h('img',{src:img,alt:'Your crop',style:{width:'100%',borderRadius:12,marginTop:10}}),h('p',{className:'err'},'Image stays on your device. A disease-detection model is not connected, so no diagnosis is made. Show the photo to your local agriculture officer.')));
+}
+function Fields(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,[n,setN]=useState({name:'',crop:'Potato',ac:'',sow:'',stage:'Vegetative'}),[e,setE]=useState('');
+ const add=()=>{if(!n.name.trim()||!(+n.ac>0)||!n.sow){setE(L.fields.error);return}setE('');const id=Math.max(...S.fields.map(x=>x.id))+1;S.setFields([...S.fields,{...n,id,ac:+n.ac}]);S.setFid(id);setN({...n,name:'',ac:'',sow:''})};
+ return D('g',D('card',h('h3',null,L.fields.title),h('table',null,h('thead',null,h('tr',null,[L.fields.fieldName,L.fields.crop,L.fields.acres,'Sown',L.fields.stage].map(x=>h('th',{key:x},x)))),h('tbody',null,S.fields.map(f=>h('tr',{key:f.id,className:f.id==S.fid?'sel':'',onClick:()=>S.setFid(f.id),tabIndex:0,onKeyDown:e=>e.key=='Enter'&&S.setFid(f.id)},[f.name,f.crop,f.ac,f.sow,f.stage].map((x,i)=>h('td',{key:i},x)))))),h(Note,null,L.fields.help)),
+  D('card',h('h3',null,L.fields.add),h('label',null,L.fields.fieldName),h('input',{value:n.name,onChange:e=>setN({...n,name:e.target.value})}),h('label',null,L.fields.crop),h('select',{value:n.crop,onChange:e=>setN({...n,crop:e.target.value})},CROPS.map(c=>h('option',{key:c},c))),h('label',null,L.fields.acres),h('input',{type:'number',min:0,value:n.ac,onChange:e=>setN({...n,ac:e.target.value})}),h('label',null,L.fields.sow),h('input',{type:'date',value:n.sow,onChange:e=>setN({...n,sow:e.target.value})}),h('label',null,L.fields.stage),h('select',{value:n.stage,onChange:e=>setN({...n,stage:e.target.value})},STAGES.map(c=>h('option',{key:c},c))),e&&h('p',{className:'err',role:'alert'},e),h('p',null,h('button',{className:'bt',onClick:add},L.fields.addBtn))));
+}
+function Ndvi(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,f=S.field,[di,setDi]=useState(2),[cmp,setCmp]=useState(false),[sel,setSel]=useState(null),g=grid(f.id,di),low=g.map((v,i)=>[v,i]).filter(x=>x[0]<.45);
+ return h(Fragment,null,h('h2',null,L.ndvi.title),h(Badge,{live:false}),h(Note,null,L.ndvi.note+API.ep.ndvi+'.'),
+  D('tabs',DATES.map((d,i)=>h('button',{key:d,className:i==di?'on':'',onClick:()=>setDi(i)},d)),h('button',{className:cmp?'on':'',onClick:()=>setCmp(!cmp)},L.ndvi.compare+' '+DATES[0])),
+  D('g',D('card',h('h3',null,f.name+' · '+DATES[di]),h(FieldMap,{g,sel,setSel}),Legend()),
+   cmp&&D('card',h('h3',null,DATES[0]+' ('+L.ndvi.earlier+')'),h(FieldMap,{g:grid(f.id,0)}),Legend()),
+   D('card',h('h3',null,L.ndvi.details),[['Crop',f.crop],['Acreage',f.ac+' acres'],['Sown',f.sow],['Stage',f.stage],[L.ndvi.avg,avg(g).toFixed(2)]].map(r=>D('row',{key:r[0]},h('b',{key:1},r[0]),h('span',{key:2},r[1]))),sel!=null&&h('p',{className:g[sel]<.45?'err':'okk'},L.overview.zone+' '+(sel+1)+': NDVI '+g[sel]+(g[sel]<.45?' – walk this part of the field and check plants and soil.':' – no action needed.'))),
+   D('card',h('h3',null,L.ndvi.attention+' ('+low.length+')'),low.length?D('chips',low.map(x=>h('button',{key:x[1],onClick:()=>setSel(x[1])},L.overview.zone+' '+(x[1]+1)+' · '+x[0]))):h('p',{className:'okk'},L.ndvi.noLow)),
+   D('card',h('h3',null,L.ndvi.history),h(Load,{k:'ndvi',fb:trend(f.id)},d=>h(Line,{series:[{d,c:'#16a34a'}],labels:WK}))),
+   D('card',h('h3',null,L.ndvi.compareField),h(Bars,{v:S.fields.map(x=>+avg(grid(x.id,di)).toFixed(2)),labels:S.fields.map(x=>x.name),colors:S.fields.map(x=>ncol(avg(grid(x.id,di)))),max:1}))));
+}
+function Disease(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,f=S.field,rk=risks(f.id),pk=rk.indexOf(Math.max(...rk)),ind=[['💧 Humidity','78%'],['🌧️ Rain','14 mm / 7 d'],['🌡️ Temperature','19–27°C'],['🍃 Leaf wetness','Not measured']],T=L.disease||{title:'🦠 Blight Risk – next 7 days',early:'Early-warning estimate, not a confirmed diagnosis. These scores are illustrative; real forecasts need a crop-specific model and validated local data (',conditions:'Conditions (sample)',summary:'Field summary',prevent:'Preventive steps for',risk:'Risk timeline'},[image,setImage]=useState(null),[preview,setPreview]=useState(''),[analysis,setAnalysis]=useState([]),[imageError,setImageError]=useState(''),[confirmedCrop,setConfirmedCrop]=useState(false);
+ useEffect(()=>()=>{if(preview)URL.revokeObjectURL(preview)},[preview]);
+ useEffect(()=>{setImage(null);setPreview('');setAnalysis([]);setImageError('');setConfirmedCrop(false)},[f.id]);
+ const chooseImage=e=>{
+  const file=e.target.files&&e.target.files[0];
+  setImage(null);setAnalysis([]);setImageError('');setConfirmedCrop(false);
+  if(!file){setPreview('');return}
+  if(!['image/jpeg','image/png','image/webp'].includes(file.type.toLowerCase())){setPreview('');setImageError('Please add a valid crop field image. Select a JPG, PNG, or WEBP image.');e.target.value='';return}
+  if(file.size>10*1024*1024){setPreview('');setImageError('Image is larger than 10 MB. Please choose a smaller crop field image.');e.target.value='';return}
+  const url=URL.createObjectURL(file),probe=new Image();
+  probe.onload=()=>{setImage(file);setPreview(url)};
+  probe.onerror=()=>{URL.revokeObjectURL(url);setPreview('');setImageError('Please add a valid crop field image. This file could not be opened as an image.');e.target.value=''};
+  probe.src=url;
+ };
+ const analyzeImage=()=>{
+  if(!image){setImageError('Please add a valid crop field image.');return}
+  if(!confirmedCrop){setImageError('Please add a valid crop field image and confirm that it shows a crop or crop leaf.');return}
+  setImageError('');
+  const candidates=[...(CROP_DISEASE_SAMPLES[f.crop]||[])];
+  for(let i=candidates.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[candidates[i],candidates[j]]=[candidates[j],candidates[i]]}
+  setAnalysis(candidates.slice(0,2+Math.floor(Math.random()*2)));
+ };
+ return h(Fragment,null,h('h2',null,T.title),h(Badge,{live:false}),
+  h('p',{className:'err'},T.early+API.ep.blight+').'),
+  D('card',h('h3',null,'Take or upload a crop photo'),
+   h('p',null,'Use your camera or choose an image. This demo does not analyze the photo: it displays random sample diseases for the selected crop.'),
+   h('p',null,h('label',null,'Crop shown in image'),h('select',{value:f.crop,disabled:true,'aria-label':'Crop shown in image'},h('option',{value:f.crop},f.crop))),
+   h('label',null,'Take a photo or choose an image (JPG, PNG, WEBP; up to 10 MB)'),h('input',{key:f.id,type:'file',accept:'image/jpeg,image/png,image/webp',capture:'environment',onChange:chooseImage,'aria-label':'Take or upload crop image'}),
+   preview&&h('img',{src:preview,alt:'Selected crop field image',style:{display:'block',maxWidth:'100%',maxHeight:320,objectFit:'contain',marginTop:12,borderRadius:12}}),
+   image&&h('label',{style:{display:'flex',alignItems:'center',gap:8,marginTop:10}},h('input',{type:'checkbox',checked:confirmedCrop,onChange:e=>{setConfirmedCrop(e.target.checked);setImageError('')},style:{width:'auto'}}),'I confirm this photo shows a '+f.crop+' crop or leaf.'),
+   h('p',null,h('button',{className:'bt',type:'button',disabled:!image,onClick:analyzeImage},'Show random sample diseases')),
+   imageError&&h('p',{className:'err',role:'alert'},imageError),
+   analysis.length>0&&D('card',{style:{marginTop:12}},h('h3',null,'Random sample possibilities for '+f.crop),h('p',{className:'err'},'Demo only: these diseases were selected at random. The uploaded photo was not analyzed, so these are not diagnoses.'),analysis.map((disease,i)=>D('card',{key:disease.name},h('h4',null,(i+1)+'. '+disease.name),h('p',null,h('b',null,'Typical signs: '),disease.symptoms),h('p',null,h('b',null,'Prevention: '),disease.prevention))))
+  ),
+  h(Note,null,'There is no crop-image classifier in this demo, so it cannot automatically reject a photo of a non-crop object. The crop confirmation is user-provided; random sample results are not based on the image. For a real diagnosis, consult a local agriculture officer.'),
+  D('g',D('card',h('h3',null,(T.risk||'Risk timeline')+' · '+f.crop),h(Load,{k:'blight',fb:rk},d=>h(Bars,{v:d,labels:d.map((_,i)=>DAY(i)),colors:d.map(rc)})),D('chips',rk.map((v,i)=>h('span',{key:i,className:'pill',style:{background:rc(v)}},DAY(i)+' '+rl(v))))),
+   D('card',h('h3',null,T.conditions),ind.map(x=>D('row',{key:x[0]},h('span',{key:1},x[0]),h('b',{key:2},x[1]))),D('row',h('span',null,'🌿 NDVI change (2 wks)'),h('b',null,'−0.04 ▼ (sample)'))),
+   D('card',h('h3',null,T.summary),h('p',null,f.name+': peak risk '+rl(rk[pk])+' around '+DAY(pk)+'. Main factors: humid spell with rain, a slight NDVI dip, and '+f.stage.toLowerCase()+' stage.'),h('p',{className:'okk'},'Suggested inspection: '+DAY(Math.max(0,pk-1))+' and '+DAY(pk))),
+   D('card',h('h3',null,T.prevent+' '+f.crop),h('ol',null,TIPS[f.crop].map(t=>h('li',{key:t},t))))));
+}
+function Yield(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,T=L.yield||{title:'🌾 Yield Prediction',inputs:'Inputs',field:'Field',estimate:'Estimate',range:'Range',total:'Total production for',forecast:'Forecast range (t/ha)',factors:'Key factors (sample weights, %)',improve:'✨ Improve My Yield',improveTitle:'Improve My Yield'},[crop,setCrop]=useState(S.field.crop),[acres,setAcres]=useState(String(S.field.ac)),[stage,setStage]=useState(S.field.stage),[sow,setSow]=useState(S.field.sow),[showTips,setShowTips]=useState(false);
+ const numericAcres=Number(acres),validAcres=Number.isFinite(numericAcres)&&numericAcres>0,y=validAcres?ycalc(crop,numericAcres,stage):null;
+ useEffect(()=>{setCrop(S.field.crop);setAcres(String(S.field.ac));setStage(S.field.stage);setSow(S.field.sow)},[S.field.id]);
+ const loadSample=()=>{setCrop(YIELD_SAMPLE.crop);setAcres(String(YIELD_SAMPLE.acres));setStage(YIELD_SAMPLE.stage);setSow(YIELD_SAMPLE.sow)};
+ const forecast=y?[{d:[y.lo*.9,y.lo,y.lo*1.04,y.lo*1.08].map(v=>+v.toFixed(1)),c:'#ea580c',dash:'4',n:'Low'},{d:[y.e*.9,y.e,y.e*1.03,y.e*1.06].map(v=>+v.toFixed(1)),c:'#16a34a',n:'Expected'},{d:[y.hi*.9,y.hi,y.hi*1.03,y.hi*1.05].map(v=>+v.toFixed(1)),c:'#2563eb',dash:'4',n:'High'}]:[];
+ return h(Fragment,null,
+  h('h2',null,T.title),h(Badge,{live:false}),h(Note,null,'Illustrative demo estimate only; no trained yield model is connected ('+API.ep.yield+'). Check local conditions before making farming decisions.'),
+  D('g',
+   D('card',h('h3',null,T.inputs),h('label',null,'Crop'),h('select',{value:crop,onChange:e=>setCrop(e.target.value)},CROPS.map(x=>h('option',{key:x,value:x},x))),h('label',null,T.field),h('select',{value:S.fid,onChange:e=>{const field=S.fields.find(x=>x.id===Number(e.target.value));if(!field)return;S.setFid(field.id);setCrop(field.crop);setAcres(String(field.ac));setStage(field.stage);setSow(field.sow)}},S.fields.map(x=>h('option',{key:x.id,value:x.id},x.name))),h('label',null,'Acreage'),h('input',{type:'number',min:'0.1',step:'0.1',value:acres,onChange:e=>setAcres(e.target.value),'aria-label':'Acreage'}),!validAcres&&h('p',{className:'err',role:'alert'},'Enter an acreage greater than 0 to calculate an estimate.'),h('label',null,'Sowing date'),h('input',{type:'date',value:sow,onChange:e=>setSow(e.target.value)}),h('label',null,'Growth stage'),h('select',{value:stage,onChange:e=>setStage(e.target.value)},STAGES.map(x=>h('option',{key:x,value:x},x))),h('p',null,h('button',{className:'bt ghost',onClick:loadSample},'Load sample data: 4 acres of flowering wheat'))),
+   D('card',h('h3',null,T.estimate),y?h(Fragment,null,h('div',{className:'kpi'},h('b',null,y.e+' t/ha'),h('span',null,T.range+' '+y.lo+' – '+y.hi+' t/ha')),h('div',{className:'kpi',style:{marginTop:10}},h('b',null,y.tot+' t'),h('span',null,T.total+' '+numericAcres+' acres')),h(Note,null,numericAcres+' acres × 0.4047 hectares/acre × '+y.e+' t/ha = '+y.tot+' t total.'),h('p',null,h('button',{className:'bt',onClick:()=>setShowTips(true)},T.improve))):h(Note,null,'A yield estimate will appear when acreage is greater than 0.')),
+   D('card',h('h3',null,T.forecast),y?h(Line,{series:forecast,labels:['Now','+2w','+4w','Harvest']}):h(Note,null,'Enter valid acreage to view the illustrative forecast.')),
+   D('card',h('h3',null,T.factors),h(Note,null,'Example input factors used for this demo illustration; these are not measured field readings.'),h(Bars,{v:[30,22,16,14,10,8],labels:['NDVI','Rain','Temp','Irrig.','Soil','Stage'],colors:['#14532D','#16a34a','#65a30d','#2563eb','#a16207','#7c3aed'],max:40,unit:'%'}))
+  ),
+  showTips&&h(Modal,{t:T.improveTitle,x:()=>setShowTips(false)},h('ol',null,['Check low-vigor zones first for soil, water or pest issues.','Adjust irrigation to local rainfall and soil conditions.','Manage weeds and nutrients using locally recommended practices.','Inspect for disease during humid weather and consult a local agriculture officer before treatment.'].map(t=>h('li',{key:t},t))))
+ );
+}
+function Water(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,[m,setM]=useState(false),rain=[0,2,12,18,4,0,0],irr=[8,6,0,0,5,8,8],T=L.water||{title:'💧 Smart Irrigation',soil:'Soil moisture',connect:'Connect a sensor',recommend:'Recommendation (weather estimate)',rainy:'Rain likely on',plan:'7-day irrigation plan (mm)',rainmm:'7-day rainfall (mm)',usage:'Water use vs. last season (kL)',sensorTitle:'Connect a soil sensor'};
+ return h(Fragment,null,h('h2',null,T.title),h(Badge,{live:false}),
+  D('g',D('card',h('h3',null,T.soil),h('p',{className:'err'},'No sensor connected. Showing no soil-moisture reading.'),h('button',{className:'bt',onClick:()=>setM(true)},T.connect)),
+   D('card',h('h3',null,T.recommend),h('p',{className:'okk'},T.rainy+' '+DAY(2)+'–'+DAY(3)+'. Irrigate '+DAY(0)+' and '+DAY(1)+' lightly, skip the rain days, then re-check soil.'),h('p',null,'Estimated water saving: ~18% (demo)'),h(Note,null,'Field need (sample): 6 mm/day for the current stage.'),h('a',{className:'bt',href:'https://mosdac.gov.in/swi/',target:'_blank',rel:'noopener noreferrer'},'View live analysis ↗')),
+  D('card',h('h3',null,'Weather forecast & heavy rainfall'),h('p',null,'View MOSDAC weather information and heavy rainfall analysis.'),D('chips',h('a',{className:'bt',href:'https://mosdac.gov.in/weather/',target:'_blank',rel:'noopener noreferrer'},'Weather forecast ↗'),h('a',{className:'bt',href:'https://mosdac.gov.in/heavyrain/',target:'_blank',rel:'noopener noreferrer'},'Heavy rainfall analysis ↗'))),
+  D('card',h('h3',null,T.rainmm),h(Bars,{v:rain,labels:rain.map((_,i)=>DAY(i)),colors:rain.map(()=>'#2563eb'),max:20})),
+   D('card',h('h3',null,T.plan),h(Bars,{v:irr,labels:irr.map((_,i)=>DAY(i)),colors:irr.map(()=>'#16a34a'),max:10})),
+   D('card',h('h3',null,T.usage),h(Line,{series:[{d:[38,44,41,46,42,40],c:'#16a34a',n:'This'},{d:[48,52,50,55,51,49],c:'#8a9a8c',dash:'4',n:'Last'}],labels:['W1','W2','W3','W4','W5','W6']}))),
+  m&&h(Modal,{t:T.sensorTitle,x:()=>setM(false)},h('p',null,'Sensor support is not implemented in this demo. A connected sensor would send readings to your backend, which this page would read and label as “sensor reading”.')));
+}
+function Market(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,[c,setC]=useState('Potato'),[q,setQ]=useState(''),[d,setD]=useState(100),[sel,setSel]=useState(0),rows=MKTS.map((m,i)=>({n:m[0],km:m[1],p:price(c,m[1],i),i})).filter(r=>r.km<=d&&r.n.toLowerCase().includes(q.toLowerCase())),T=L.market||{title:'📈 Market Prices',search:'Search mandi…',within:'Within',priceTrend:'Price trend'};
+ return h(Fragment,null,h('h2',null,T.title),h(Badge,{live:false}),h(Note,null,'Sample prices from a demo dataset, not real mandi data. Plug a verified feed into '+API.ep.prices+'.'),
+  D('tabs',CROPS.map(x=>h('button',{key:x,className:x==c?'on':'',onClick:()=>setC(x)},x))),
+  D('g',D('card',h('input',{placeholder:T.search,'aria-label':'Search mandi',value:q,onChange:e=>setQ(e.target.value)}),h('label',null,T.within+' '+d+' km'),h('input',{type:'range',min:10,max:100,value:d,onChange:e=>setD(+e.target.value)}),
+    rows.length?h('table',null,h('thead',null,h('tr',null,['Mandi','Km','₹/quintal','Source','Updated'].map(x=>h('th',{key:x},x)))),h('tbody',null,rows.map(r=>h('tr',{key:r.n,className:sel==r.i?'sel':'',onClick:()=>setSel(r.i)},h('td',null,r.n),h('td',null,r.km),h('td',null,h('b',null,'₹'+r.p)),h('td',null,'Demo dataset'),h('td',null,'—'))))):h('p',{className:'err'},'No mandis match. Try a larger distance.')),
+   D('card',h('h3',null,T.priceTrend+' · '+MKTS[sel][0]),h(Line,{series:[{d:[0,1,2,3,4,5].map(k=>price(c,MKTS[sel][1],sel)+[-40,20,-10,30,0,k*0+15][k]),c:'#16a34a'}],labels:['W1','W2','W3','W4','W5','W6'],unit:' ₹'}))));
+}
+function Buyers(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,[tab,setTab]=useState('find'),[type,setType]=useState('All'),[m,setM]=useState(null),[msg,setMsg]=useState(''),[l,setL]=useState({crop:'Potato',qty:'',grade:'A',price:''}),[e,setE]=useState(''),ST=['Sent','Seen','Replied','Confirmed'],T=L.buyers||{title:'🤝 Buyer Connect',discover:'Discover buyers',list:'List produce',enq:'Enquiries',newListing:'New listing',send:'✉️ Send enquiry',buyers:'Buyer type',noBuyers:'No buyers of this type.',publish:'Publish listing',myListings:'My listings',remove:'Remove',available:'Available',empty:'Nothing listed yet.',withdraw:'Withdraw',message:'Message',sendBtn:'Send'};
+ const bs=BUYERS.filter(b=>type=='All'||b[1]==type);
+ return h(Fragment,null,h('h2',null,T.title),h(Badge,{live:false}),h(Note,null,'Buyer cards are placeholders, not real listings. Enquiries are stored only in this browser tab.'),
+  D('tabs',[['find',T.discover],['list',T.list],['enq',T.enq+' ('+S.enq.length+')']].map(t=>h('button',{key:t[0],className:tab==t[0]?'on':'',onClick:()=>setTab(t[0])},t[1]))),
+  tab=='find'&&h(Fragment,null,h('select',{value:type,'aria-label':'Buyer type',onChange:e=>setType(e.target.value),style:{maxWidth:220,marginBottom:12}},['All','Wholesaler','Retailer','Food processor','Local buyer'].map(x=>h('option',{key:x},x))),D('g',bs.map(b=>D('card',h('h3',null,b[0]),h('p',null,b[1]+' · wants: '+b[2]),h('button',{className:'bt',onClick:()=>{setM(b);setMsg('')}},T.send))),!bs.length&&h('p',null,T.noBuyers))),
+  tab=='list'&&D('g',D('card',h('h3',null,T.newListing),h('label',null,'Crop'),h('select',{value:l.crop,onChange:e=>setL({...l,crop:e.target.value})},CROPS.map(x=>h('option',{key:x},x))),h('label',null,'Quantity (quintals)'),h('input',{type:'number',min:0,value:l.qty,onChange:e=>setL({...l,qty:e.target.value})}),h('label',null,'Grade'),h('select',{value:l.grade,onChange:e=>setL({...l,grade:e.target.value})},['A','B','C'].map(x=>h('option',{key:x},x))),h('label',null,'Expected price (₹/quintal)'),h('input',{type:'number',min:0,value:l.price,onChange:e=>setL({...l,price:e.target.value})}),e&&h('p',{className:e[0]=='✓'?'okk':'err',role:'alert'},e),h('p',null,h('button',{className:'bt',onClick:()=>{if(!(+l.qty>0)||!(+l.price>0)){setE('Enter a quantity and price above 0.');return}S.setLst([...S.lst,{...l,id:Date.now()}]);setE('✓ Listing added.');setL({...l,qty:'',price:''})}},T.publish))),
+   D('card',h('h3',null,T.myListings),S.lst.length?S.lst.map(x=>D('row',{key:x.id},h('span',{key:1},x.crop+' · '+x.qty+' q · grade '+x.grade+' · ₹'+x.price),h('span',{key:2,className:'pill',style:{background:'#16a34a'}},T.available),h('button',{key:3,className:'bt ghost sm',onClick:()=>S.setLst(S.lst.filter(y=>y.id!=x.id))},T.remove))):h('p',null,T.empty))),
+  tab=='enq'&&(S.enq.length?S.enq.map(x=>D('card',{key:x.id},h('b',null,x.to),h('p',null,x.msg),D('stp',ST.map((s,i)=>h('span',{key:s,className:i==0&&!x.w?'d':''},s))),h('p',null,x.w?'Withdrawn':'Status: Sent (demo – not delivered to a real buyer)'),!x.w&&h('button',{className:'bt ghost sm',onClick:()=>S.setEnq(S.enq.map(y=>y.id==x.id?{...y,w:1}:y))},T.withdraw))):h('p',null,'No enquiries yet. Discover buyers to send one.')),
+  m&&h(Modal,{t:'Enquiry to '+m[0],x:()=>setM(null)},h('label',null,T.message),h('textarea',{rows:3,value:msg,onChange:e=>setMsg(e.target.value),placeholder:'e.g. 10 quintals of '+S.field.crop+', grade A'}),h('p',null,h('button',{className:'bt',onClick:()=>{if(!msg.trim())return;S.setEnq([...S.enq,{id:Date.now(),to:m[0],msg}]);setM(null);setTab('enq')}},T.sendBtn))));
+}
+/* NLP assistant: replace answer() with a call to API.ep.assistant. */
+function answer(q,x,lang){const s=q.toLowerCase(),f=x.field,g=avg(grid(f.id,2)).toFixed(2),rk=Math.max(...risks(f.id)),y=ycalc(f.crop,f.ac,f.stage),hi=lang=='hi',n=x.n;
+ const R=[[/daag|bimari|rog|disease|blight|spot|patt|spots/,{en:['For your '+f.crop+' in '+f.name+': spots can have many causes, so I cannot diagnose from text.\n1. Check lower leaves in the morning.\n2. Take a clear photo.\n3. Show it to your local agriculture officer before any spray.','Are the spots on old or new leaves?'],hi:['आपके '+f.name+' के '+f.crop+' में दाग कई कारणों से हो सकते हैं, इसलिए मैं यहाँ से पक्की पहचान नहीं कर सकता।\n1. सुबह नीचे के पत्ते देखें।\n2. साफ़ फोटो लें।\n3. कोई भी दवा डालने से पहले कृषि अधिकारी को दिखाएँ।','दाग पुराने पत्तों पर हैं या नए पर?']}],
+ [/ndvi|vegetation|health|sehat/,{en:['Demo NDVI for '+f.name+' averages '+g+'. Zones below 0.45 need a walk-through. This is sample data, not a satellite reading.','Want to open the NDVI map?'],hi:[f.name+' का डेमो NDVI औसत '+g+' है। 0.45 से कम वाले हिस्सों को जाकर देखें। यह नमूना जानकारी है, उपग्रह की नहीं।','क्या NDVI नक्शा खोलूँ?']}],
+ [/yield|paidawar|harvest|kitni/,{en:['Illustrative estimate for '+f.crop+' ('+f.ac+' acres): about '+y.e+' t/ha, '+y.tot+' t in total (range '+y.lo+'–'+y.hi+' t/ha). No trained model is connected yet.','Should I show what could improve it?'],hi:[f.crop+' ('+f.ac+' एकड़) का उदाहरण अनुमान: लगभग '+y.e+' टन/हेक्टेयर, कुल '+y.tot+' टन। अभी कोई प्रशिक्षित मॉडल जुड़ा नहीं है।','क्या सुधार के तरीके बताऊँ?']}],
+ [/mandi|bhav|price|rate|sell/,{en:['I have only sample prices, not live mandi data. Open Market Prices to compare demo mandis, and check your local mandi before selling.','Which crop do you want to compare?'],hi:['मेरे पास सिर्फ़ नमूना भाव हैं, असली मंडी भाव नहीं। बेचने से पहले अपनी स्थानीय मंडी में जाँच करें।','किस फसल की तुलना करें?']}],
+ [/irrigat|paani|pani|sinchai|water/,{en:['Weather estimate (no soil sensor): rain is likely on '+DAY(2)+'–'+DAY(3)+'. Water lightly today, skip rain days, and check the soil by hand first.','Is your field flat or sloping?'],hi:['मौसम का अनुमान (मिट्टी सेंसर नहीं): '+DAY(2)+'–'+DAY(3)+' को बारिश संभव है। आज हल्का पानी दें, बारिश के दिन छोड़ें, और पहले मिट्टी हाथ से देखें।','आपका खेत समतल है या ढलान वाला?']}],
+ [/weather|mausam|barish|rain/,{en:['Demo weather: 27°C, 60% rain chance, 78% humidity. Connect a weather API for real forecasts.','Want the 7-day plan?'],hi:['डेमो मौसम: 27°C, बारिश 60%, नमी 78%। असली पूर्वानुमान के लिए मौसम API जोड़ें।','7 दिन की योजना देखें?']}]];
+ const r=R.find(a=>a[0].test(s));
+ return r?r[1][hi?'hi':'en']:(hi?['मैं आपके '+f.crop+' के बारे में बीमारी, NDVI, पैदावार, भाव, सिंचाई या मौसम पर मदद कर सकता हूँ। कृपया इनमें से कुछ पूछें।','आप क्या जानना चाहते हैं?']:['I can help with disease, NDVI, yield, prices, irrigation or weather for your '+f.crop+'. Try one of those.','What would you like to know?']);}
+function Chat(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,C=L.chat||{},T={
+  title:C.title||'🎙️ Kisan AI Saathi',
+  demo:C.demo||'Demo mode: rule-based replies using your selected field',
+  backend:C.backend||'Connect '+API.ep.assistant+' for an NLP/LLM backend.',
+  voiceLabel:C.voiceLabel||'🔊 Read answers aloud',
+  voiceWarn:C.voiceWarn||C.voice||'Voice input is not supported in this browser. Please type.',
+  voiceFail:C.voiceFail||C.hearing||'Could not hear you. Please try again or type.',
+  voiceError:C.voiceError||C.failed||'Voice input failed. Please type.',
+  placeholder:C.placeholder||C.question||'Type your question…',
+  send:C.send||'Send',
+  voiceBtn:C.voiceBtn||'Voice input',
+  quick:C.quick||[['🦠 Crop disease','Mere '+S.field.crop.toLowerCase()+' ki fasal mein daag aa rahe hain, kya karun?'],['🛰️ NDVI','What is the vegetation health of my field?'],['💧 Irrigation','Should I irrigate my field tomorrow?'],['🌦️ Weather','Will it rain this week?'],['📈 Prices','Aaj meri fasal ka mandi bhav kya hai?']]
+ };
+ const [lang,setLang]=useState(S.lang),[tts,setTts]=useState(false),[txt,setTxt]=useState(''),[msgs,setMsgs]=useState([{r:'a',t:'Namaste! I am Kisan AI Saathi (demo mode). Ask about '+S.field.name+'.'}]),[err,setErr]=useState('');
+ useEffect(()=>setLang(S.lang),[S.lang]);
+ const send=q=>{q=q.trim();if(!q)return;const[a,fu]=answer(q,{field:S.field},lang);setMsgs(m=>[...m,{r:'u',t:q},{r:'a',t:a+'\n\n❓ '+fu}]);setTxt('');if(tts&&'speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(a);u.lang=LANGS[lang].v;speechSynthesis.speak(u)}};
+ const mic=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){setErr(T.voiceWarn);return}setErr('');try{const r=new SR();r.lang=LANGS[lang].v;r.onresult=e=>send(e.results[0][0].transcript);r.onerror=()=>setErr(T.voiceFail);r.start()}catch(x){setErr(T.voiceError)}};
+ useEffect(()=>{const el=document.getElementById('chatbox');el&&(el.scrollTop=el.scrollHeight)},[msgs]);
+ return h(Fragment,null,h('h2',null,T.title),h(Note,null,T.demo+' ('+S.field.name+', '+S.field.crop+'). '+T.backend),
+  D('card',D('row',h('select',{key:1,value:lang,'aria-label':'Language',onChange:e=>setLang(e.target.value),style:{maxWidth:160}},Object.keys(LANGS).map(k=>h('option',{key:k,value:k},LANGS[k].n))),h('label',{key:2,style:{margin:0}},h('input',{type:'checkbox',style:{width:'auto'},checked:tts,onChange:e=>setTts(e.target.checked)}),T.voiceLabel)),
+   h('div',{className:'chat',id:'chatbox','aria-live':'polite'},msgs.map((m,i)=>D('msg '+m.r,{key:i},m.t)).map((el,i)=>h('div',{key:i,className:el.props.className},msgs[i].t))),
+   D('chips',T.quick.map(c=>h('button',{key:c[0],onClick:()=>send(c[1])},c[0]))),
+   err&&h('p',{className:'err',role:'alert'},err),
+   D('row',h('input',{key:1,placeholder:T.placeholder,'aria-label':'Your question',value:txt,onChange:e=>setTxt(e.target.value),onKeyDown:e=>e.key=='Enter'&&send(txt)}),h('button',{key:2,className:'bt ghost','aria-label':T.voiceBtn,onClick:mic},'🎤'),h('button',{key:3,className:'bt',onClick:()=>send(txt)},T.send))));
+}
+function Settings(){
+ const S=useContext(Ctx),L=LANGS[S.lang]||LANGS.en,[api,setApi]=useState(API.base),[ok,setOk]=useState(false),T=L.settings||{title:'Preferences',theme:'Theme',api:'Backend API base URL',save:'Save',saved:'Saved. Pages now try this server and fall back to sample data if it fails.',note:'Only non-sensitive preferences are stored in this browser.',sources:'Data sources & integrations',notConnected:'Not connected'};
+ const INT=[['Sentinel-2 imagery','Red + NIR, 10 m'],['IMD weather','Forecast 5–7 days'],['INSAT-3D','Cloud cover, rainfall, LST'],['ISRO Bhuvan soil data','Soil health'],['Open-Meteo','Global weather API'],['FastAPI + Celery backend','Inference, daily jobs'],['Telegram bot','Alerts and chat']];
+ return D('g',D('card',h('h3',null,T.title),h('label',null,T.theme),h('select',{value:S.theme === 'dark' ? 'dark' : 'light',onChange:e=>S.setTheme(e.target.value)},['light','dark'].map(x=>h('option',{key:x},x))),h('label',null,T.api),h('input',{placeholder:'https://your-fastapi.example.com',value:api,onChange:e=>{setApi(e.target.value);setOk(false)}}),h('p',null,h('button',{className:'bt',onClick:()=>{ls.set('av_api',api);API.base=api;setOk(true)}},T.save)),ok&&h('p',{className:'okk',role:'status'},T.saved),h(Note,null,T.note)),
+  D('card',h('h3',null,T.sources),INT.map(i=>D('row',{key:i[0]},h('span',{key:1},h('b',null,i[0]),h('br'),h('small',null,i[1])),h('span',{key:2,className:'tag'},T.notConnected)))));
+}
+
+/* ===== shell + router ===== */
+function Shell({page}){
+ const S=useContext(Ctx),[al,setAl]=useState(false),P={overview:Overview,fields:Fields,ndvi:Ndvi,disease:Disease,yield:Yield,water:Water,market:Market,buyers:Buyers,chat:Chat,settings:Settings}[page]||Overview;
+ const l=LANGS[S.lang]||LANGS.en,T=l.shell||{collapse:'Collapse sidebar',alerts:'Alerts',alertTitle:'Alerts (sample)',theme:'Theme'};
+ const currentTheme = S.theme === 'dark' ? 'dark' : 'light';
+ return D('app'+(S.col?' col':''),
+  h('aside',{className:'side','aria-label':'Main navigation'},D('brand',h('a',{href:'#/'},'🌱 ',h('b',null,'AgroVision AI'))),h('div',{style:{padding:'0 8px 8px 8px'}},h('select',{className:'lang-switch',value:S.lang,onChange:e=>S.setLang(e.target.value),style:{width:'100%'}},Object.keys(LANGS).map(k=>h('option',{key:k,value:k},LANGS[k].n)))),NAV.map(n=>h('a',{key:n[0],href:'#/app/'+n[0],className:page==n[0]?'on':'',title:n[1],'aria-current':page==n[0]?'page':undefined},h('span',null,n[2]),h('em',null,n[1])))),
+  D('main',h('header',{className:'top'},h('button',{className:'bt ghost sm','aria-label':T.collapse,onClick:()=>S.setCol(!S.col)},'☰'),h('select',{'aria-label':'Active field',value:S.fid,onChange:e=>S.setFid(+e.target.value)},S.fields.map(f=>h('option',{key:f.id,value:f.id},f.name+' · '+f.crop))),h('select',{className:'lang-switch',value:S.lang,onChange:e=>S.setLang(e.target.value),style:{maxWidth:120,background:'rgba(17,24,39,.08)',color:'inherit',borderColor:'var(--line)'}},Object.keys(LANGS).map(k=>h('option',{key:k,value:k},LANGS[k].n))),h(Badge,{live:false}),h('span',{style:{flex:1}}),h('button',{className:'bt ghost sm',onClick:()=>setAl(true)},'🔔 '+T.alerts),h('button',{className:'bt ghost sm theme-btn',title:currentTheme=='dark'?'Switch to light mode':'Switch to dark mode',onClick:()=>S.setTheme(currentTheme === 'dark' ? 'light' : 'dark')},h(ThemeIcon,{theme:currentTheme}))),
+   D('page',{key:page},h(P))),
+  al&&h(Modal,{t:T.alertTitle,x:()=>setAl(false)},[['High','Humid spell forecast – inspect '+S.field.crop+' on '+DAY(3)],['Medium','Rain likely '+DAY(2)+' – skip irrigation'],['Low','Zones below NDVI 0.45 in '+S.field.name]].map(a=>D('row',{key:a[1]},h('span',{key:1,className:'pill',style:{background:a[0]=='High'?'#dc2626':a[0]=='Medium'?'#ca8a04':'#16a34a'}},a[0]),h('span',{key:2},a[1])))));
+}
+function App(){
+ const[route,setRoute]=useState(location.hash),[fields,setFields]=useState(FIELDS0),[fid,setFid]=useState(1),[col,setCol]=useState(false),[theme,setTheme]=useState(()=>{
+  const saved = ls.get('av_theme');
+  if (saved === 'light' || saved === 'dark') return saved;
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+ }),[lang,setLang]=useState(ls.get('av_lang')||'en'),[enq,setEnq]=useState([]),[lst,setLst]=useState([]);
+ useEffect(()=>{const f=()=>{setRoute(location.hash);window.scrollTo(0,0)};addEventListener('hashchange',f);return()=>removeEventListener('hashchange',f)},[]);
+ useEffect(()=>{
+  const effective = theme === 'dark' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', effective);
+  ls.set('av_theme', effective);
+ },[theme]);
+ useEffect(()=>{ls.set('av_lang',lang)},[lang]);
+ const field=fields.find(f=>f.id==fid)||fields[0],S={fields,setFields,fid,setFid,field,col,setCol,theme,setTheme,lang,setLang,enq,setEnq,lst,setLst},m=route.match(/^#\/app\/?(\w*)/);
+ return h(Ctx.Provider,{value:S},m?h(Shell,{page:m[1]||'overview'}):h(Landing));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>
