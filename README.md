@@ -134,10 +134,6 @@ The classification head consists of:
 - Dropout regularization with a probability of 0.2.
 - Final classification layer with 94 output classes.
 
-The model weights and associated class mapping are retrieved from Hugging Face.
-
-**Model Repository:** [Saon110/bd-crop-vegetable-plant-disease-model](https://huggingface.co/Saon110/bd-crop-vegetable-plant-disease-model)
-
 #### Inference Pipeline
 
 1. Load an input plant image.
