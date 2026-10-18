@@ -201,29 +201,3 @@ These models require appropriate datasets, training, evaluation, and field-level
 *The table describes the current and planned technology stack. Not every component has been integrated yet.*
 
 ---
-
-## 📂 Project Structure
-
-The repository can initially follow this structure:
-
-```text
-AgriSense/
-│
-├── model.py                 # Plant disease classification model
-├── app.py                   # FastAPI application
-├── requirements.txt         # Python dependencies
-├── README.md
-│
-├── models/
-│   └── README.md            # Model artifacts and documentation
-│
-├── data/
-│   └── README.md            # Dataset documentation
-│
-├── test_images/
-│   └── README.md            # Instructions for adding test images
-│
-├── services/
-│   └── README.md            # Data ingestion and processing services
-│
-└── .gitignore
